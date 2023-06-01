@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.WorkerBoard"
+    android:focusable="true"
+    android:clickable="true">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+        <RelativeLayout
+            android:layout_marginTop="32dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/page_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_toStartOf="@id/loading_refresh_section"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:text="@string/alerts_page_title"
+                android:textColor="@color/blue"
+                android:textSize="40sp"
+                android:textStyle="bold" />
+            <RelativeLayout
+                android:layout_marginEnd="32dp"
+                android:id="@+id/loading_refresh_section"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true">
+                <ProgressBar
+                    android:visibility="gone"
+                    android:id="@+id/loading"
+                    android:layout_width="40dp"
+                    android:layout_height="52dp"
+                    android:layout_marginStart="16dp"
+                    android:indeterminateTint="@color/blue" />
+
+                <ImageView
+                    android:visibility="gone"
+                    android:id="@+id/refresh_button"
+                    android:layout_width="40dp"
+                    android:layout_height="52dp"
+                    android:scaleType="fitCenter"
+                    android:layout_marginStart="16dp"
+                    android:src="@drawable/ic_baseline_refresh_24"
+                    app:tint="@color/blue" />
+            </RelativeLayout>
+            <HorizontalScrollView
+                android:layout_marginTop="16dp"
+                android:id="@+id/alerts_filtering_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scrollbars="none"
+                android:layout_below="@id/page_title">
+            <RelativeLayout
+                android:id="@+id/alerts_filtering"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:id="@+id/all_alerts_section"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_marginEnd="32dp"
+                    android:layout_marginStart="32dp"
+                    android:background="@drawable/blue_section"
+                    android:paddingStart="32dp"
+                    android:paddingEnd="32dp">
+
+                    <TextView
+                        android:id="@+id/all_alerts"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="@string/all_alerts"
+                        android:textColor="@color/yellow"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/very_low_risk_alerts_section"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_marginEnd="32dp"
+                    android:layout_toEndOf="@id/all_alerts_section"
+                    android:background="@drawable/risk_very_low_outline_no_round_button_normal"
+                    android:paddingStart="32dp"
+                    android:paddingEnd="32dp">
+
+                    <TextView
+                        android:id="@+id/very_low_risk_alerts"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="@string/very_low_risk_level"
+                        android:textColor="@color/blue"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/low_risk_alerts_section"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_marginEnd="32dp"
+                    android:layout_toEndOf="@id/very_low_risk_alerts_section"
+                    android:background="@drawable/risk_low_outline_no_round_button_normal"
+                    android:paddingStart="32dp"
+                    android:paddingEnd="32dp">
+
+                    <TextView
+                        android:id="@+id/low_risk_alerts"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="@string/low_risk_level"
+                        android:textColor="@color/blue"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/medium_alerts_section"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_marginEnd="32dp"
+                    android:layout_toEndOf="@id/low_risk_alerts_section"
+                    android:background="@drawable/risk_medium_outline_no_round_button_normal"
+                    android:paddingStart="32dp"
+                    android:paddingEnd="32dp">
+
+                    <TextView
+                        android:id="@+id/medium_risk_alerts"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="@string/medium_risk_level"
+                        android:textColor="@color/blue"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/high_risk_alerts_section"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_marginEnd="32dp"
+                    android:layout_toEndOf="@id/medium_alerts_section"
+                    android:background="@drawable/risk_high_outline_no_round_button_normal"
+                    android:paddingStart="32dp"
+                    android:paddingEnd="32dp">
+
+                    <TextView
+                        android:id="@+id/high_risk_alerts"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="@string/high_risk_level"
+                        android:textColor="@color/blue"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/very_high_risk_alerts_section"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_marginEnd="32dp"
+                    android:layout_toEndOf="@id/high_risk_alerts_section"
+                    android:background="@drawable/green_outline_no_round_button_normal"
+                    android:paddingStart="32dp"
+                    android:paddingEnd="32dp">
+
+                    <TextView
+                        android:id="@+id/very_high_risk_alerts"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="@string/very_high_risk_level"
+                        android:textColor="@color/blue"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+            </RelativeLayout>
+            </HorizontalScrollView>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view_alerts"
+                android:layout_width="match_parent"
+                android:layout_height="405dp"
+                android:layout_below="@id/alerts_filtering_horizontal"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="32dp"
+                android:nestedScrollingEnabled="true" />
+            <TextView
+                android:visibility="gone"
+                android:id="@+id/no_alerts"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_below="@id/alerts_filtering_horizontal"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:padding="16dp"
+                android:text="@string/no_alerts"
+                android:textAlignment="center"
+                android:textColor="@color/grey"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</RelativeLayout>

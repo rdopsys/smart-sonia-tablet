@@ -1,0 +1,191 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="300dp"
+    android:layout_height="290dp"
+    android:paddingEnd="16dp">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="8dp"
+        app:cardCornerRadius="10dp"
+        android:background="@color/white"
+        android:outlineAmbientShadowColor="@color/grey_light"
+        app:cardElevation="4dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp">
+
+            <RelativeLayout
+                android:id="@+id/beacons_tools_section"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp">
+
+                <ImageView
+                    android:id="@+id/worker_edit"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="16dp"
+                    android:layout_toStartOf="@id/worker_delete"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_edit"
+                    app:tint="@color/grey_light" />
+
+                <ImageView
+                    android:id="@+id/worker_delete"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_delete"
+                    app:tint="@color/grey_light" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_below="@id/beacons_tools_section"
+                android:id="@+id/beacon_title_section"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp">
+
+                <ImageView
+                    android:id="@+id/worker_icon"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:layout_centerVertical="true"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_worker"
+                    app:tint="@color/blue" />
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="16dp"
+                    android:layout_toEndOf="@id/worker_icon">
+
+                    <TextView
+                        android:id="@+id/worker_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:maxLines="2"
+                        android:textColor="@color/blue"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/beacon_line"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/beacon_title_section"
+                android:layout_marginBottom="16dp"
+                android:background="@color/grey_light" />
+
+            <RelativeLayout
+                android:id="@+id/beacon_info_section"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/beacon_line">
+
+                <RelativeLayout
+                    android:id="@+id/watch_section"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp">
+
+                    <ImageView
+                        android:id="@+id/watch_icon"
+                        android:layout_width="56dp"
+                        android:layout_height="32dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="16dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_watch_disable" />
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_toEndOf="@id/watch_icon">
+
+                        <TextView
+                            android:id="@+id/watch_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:text="@string/match_smartwatch"
+                            android:textColor="@color/grey"
+                            android:textSize="13sp" />
+
+                        <TextView
+                            android:id="@+id/watch_state"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/watch_title"
+                            android:ellipsize="end"
+                            android:maxLines="2"
+                            android:textColor="@color/blue"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/check_in_section"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_below="@id/watch_section">
+
+                    <ImageView
+                        android:id="@+id/check_in_icon"
+                        android:layout_width="56dp"
+                        android:layout_height="32dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginEnd="16dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_check_in_off" />
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_toEndOf="@id/check_in_icon">
+
+                        <TextView
+                            android:id="@+id/check_in_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:text="@string/check_in"
+                            android:textColor="@color/grey"
+                            android:textSize="13sp" />
+
+                        <TextView
+                            android:id="@+id/check_in_state"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/check_in_title"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:textColor="@color/blue"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+                    </RelativeLayout>
+                </RelativeLayout>
+            </RelativeLayout>
+        </RelativeLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>
+

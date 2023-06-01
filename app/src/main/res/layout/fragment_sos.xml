@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.WorkerBoard"
+    android:focusable="true"
+    android:clickable="true">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+        <RelativeLayout
+            android:padding="32dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/page_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16sp"
+                android:layout_toStartOf="@id/loading_refresh_section"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:text="@string/sos_page_title"
+                android:textColor="@color/blue"
+                android:textSize="40sp"
+                android:textStyle="bold" />
+            <RelativeLayout
+                android:id="@+id/loading_refresh_section"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true">
+                <ProgressBar
+                    android:visibility="gone"
+                    android:id="@+id/loading"
+                    android:layout_width="40dp"
+                    android:layout_height="52dp"
+                    android:layout_marginStart="16dp"
+                    android:indeterminateTint="@color/blue" />
+
+                <ImageView
+                    android:visibility="gone"
+                    android:id="@+id/refresh_button"
+                    android:layout_width="40dp"
+                    android:layout_height="52dp"
+                    android:scaleType="fitCenter"
+                    android:layout_marginStart="16dp"
+                    android:src="@drawable/ic_baseline_refresh_24"
+                    app:tint="@color/blue" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/recycler_view_sos_alerts_section"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/page_title"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/white_no_round_button_normal"
+                android:elevation="5dp"
+                android:outlineAmbientShadowColor="@color/grey"
+                android:paddingTop="32dp"
+                android:paddingBottom="48dp">
+
+                <LinearLayout
+                    android:id="@+id/sos_alerts_info_title_section"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingStart="32dp"
+                    android:paddingEnd="32dp"
+                    android:paddingBottom="16dp">
+
+                    <TextView
+                        android:id="@+id/sos_alert_worker"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:padding="8dp"
+                        android:text="@string/worker_name"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/grey"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/sos_alert_location"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:padding="8dp"
+                        android:text="@string/location"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/grey"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/sos_alert_time"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:padding="8dp"
+                        android:text="@string/time"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/grey"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/sos_alert_date"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:padding="8dp"
+                        android:text="@string/date"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/grey"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/sos_alert_delete"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="24dp"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:text="@string/edit"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/grey"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_view_sos_alerts"
+                    android:layout_width="match_parent"
+                    android:layout_height="370dp"
+                    android:layout_below="@id/sos_alerts_info_title_section"
+                    android:nestedScrollingEnabled="true" />
+
+                <TextView
+                    android:id="@+id/no_sos_alert"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/sos_alerts_info_title_section"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:padding="16dp"
+                    android:text="@string/no_sos_alerts"
+                    android:textAlignment="center"
+                    android:textColor="@color/grey"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </androidx.core.widget.NestedScrollView>
+    <!-- CONFIRM WINDOW-->
+    <RelativeLayout
+        android:visibility="gone"
+        android:id="@+id/confirm_delete_section"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="@color/transparent_20_black"
+        android:paddingStart="56dp"
+        android:paddingEnd="56dp"
+        android:paddingBottom="56dp"
+        android:paddingTop="56dp">
+
+        <RelativeLayout
+            android:visibility="gone"
+            android:id="@+id/confirm_delete_inner_section"
+            android:layout_centerInParent="true"
+            android:background="@drawable/white_no_round_button_normal"
+            android:padding="56dp"
+            android:gravity="center"
+            android:elevation="6dp"
+            android:outlineAmbientShadowColor="@color/grey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:layout_centerHorizontal="true"
+                android:id="@+id/confirm_text_section"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/confirm_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:textAlignment="center"
+                    android:layout_centerHorizontal="true"
+                    android:textColor="@color/blue"
+                    android:textSize="20sp"
+                    android:text="@string/delete_sos_alert"
+                    android:textStyle="bold"/>
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_below="@id/confirm_text"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true">
+                    <TextView
+                        android:id="@+id/confirm_yes"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16sp"
+                        android:background="@drawable/blue_no_round_button"
+                        android:ellipsize="end"
+                        android:gravity="center"
+                        android:maxLines="2"
+                        android:paddingStart="8dp"
+                        android:paddingTop="8dp"
+                        android:paddingEnd="8dp"
+                        android:paddingBottom="8dp"
+                        android:text="@string/yes"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/confirm_no"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@id/confirm_yes"
+                        android:background="@drawable/grey_outline_no_round_button"
+                        android:ellipsize="end"
+                        android:gravity="center"
+                        android:maxLines="2"
+                        android:paddingStart="8dp"
+                        android:paddingTop="8dp"
+                        android:paddingEnd="8dp"
+                        android:paddingBottom="8dp"
+                        android:text="@string/no"
+                        android:textColor="@color/grey"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

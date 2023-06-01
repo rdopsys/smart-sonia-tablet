@@ -1,0 +1,453 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.WorkerBoard"
+    android:focusable="true"
+    android:clickable="true">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="32dp"
+            android:paddingEnd="32dp"
+            android:paddingTop="32dp">
+
+            <TextView
+                android:id="@+id/page_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/loading_refresh_section"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:text="@string/beacons_page_title"
+                android:textColor="@color/blue"
+                android:textSize="40sp"
+                android:textStyle="bold" />
+
+            <RelativeLayout
+                android:id="@+id/loading_refresh_section"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true">
+                <ProgressBar
+                    android:visibility="gone"
+                    android:id="@+id/loading"
+                    android:layout_width="40dp"
+                    android:layout_height="52dp"
+                    android:layout_marginStart="16dp"
+                    android:indeterminateTint="@color/blue" />
+
+                <ImageView
+                    android:visibility="gone"
+                    android:id="@+id/refresh_button"
+                    android:layout_width="40dp"
+                    android:layout_height="52dp"
+                    android:scaleType="fitCenter"
+                    android:layout_marginStart="16dp"
+                    android:src="@drawable/ic_baseline_refresh_24"
+                    app:tint="@color/blue" />
+            </RelativeLayout>
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view_beacons"
+                android:layout_width="match_parent"
+                android:layout_height="480dp"
+                android:layout_below="@id/page_title"
+                android:layout_marginTop="16dp"
+                android:nestedScrollingEnabled="true" />
+        </RelativeLayout>
+
+    </androidx.core.widget.NestedScrollView>
+    <!-- CONFIRM WINDOW-->
+    <RelativeLayout
+        android:visibility="gone"
+        android:id="@+id/confirm_delete_section"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="@color/transparent_20_black"
+        android:paddingStart="56dp"
+        android:paddingEnd="56dp"
+        android:paddingBottom="56dp"
+        android:paddingTop="56dp">
+
+            <RelativeLayout
+                android:visibility="gone"
+                android:id="@+id/confirm_delete_inner_section"
+                android:layout_centerInParent="true"
+                android:background="@drawable/white_no_round_button_normal"
+                android:padding="56dp"
+                android:gravity="center"
+                android:elevation="6dp"
+                android:outlineAmbientShadowColor="@color/grey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <RelativeLayout
+                    android:layout_centerHorizontal="true"
+                    android:id="@+id/confirm_text_section"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/confirm_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:textAlignment="center"
+                        android:textColor="@color/blue"
+                        android:textSize="20sp"
+                        android:textStyle="bold"/>
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_below="@id/confirm_text"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true">
+                        <TextView
+                            android:id="@+id/confirm_yes"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="16sp"
+                            android:background="@drawable/blue_no_round_button"
+                            android:ellipsize="end"
+                            android:gravity="center"
+                            android:maxLines="2"
+                            android:paddingStart="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingEnd="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/yes"
+                            android:textColor="@color/white"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/confirm_no"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@id/confirm_yes"
+                            android:background="@drawable/grey_outline_no_round_button"
+                            android:ellipsize="end"
+                            android:gravity="center"
+                            android:maxLines="2"
+                            android:paddingStart="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingEnd="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/no"
+                            android:textColor="@color/grey"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+    </RelativeLayout>
+    <!-- BEACON ADD FORM-->
+    <RelativeLayout
+        android:visibility="gone"
+        android:id="@+id/background_add_form_section"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:background="@color/transparent_20_black"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:paddingTop="0dp">
+
+        <ScrollView
+            android:visibility="gone"
+            android:id="@+id/add_form_section"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fillViewport="true">
+
+            <RelativeLayout
+                android:id="@+id/add_form"
+                android:layout_width="532dp"
+                android:layout_height="332dp"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="110dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@color/white"
+                    android:outlineAmbientShadowColor="@color/grey"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="5dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="16dp">
+
+                        <TextView
+                            android:id="@+id/add_beacon_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="16dp"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:textColor="@color/blue"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                        <RelativeLayout
+                            android:id="@+id/beacon_title_section"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/add_beacon_title"
+                            android:layout_marginBottom="16dp">
+
+                            <ImageView
+                                android:id="@+id/radar_icon"
+                                android:layout_width="56dp"
+                                android:layout_height="32dp"
+                                android:layout_centerVertical="true"
+                                android:layout_marginEnd="16dp"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/ic_beacon_radar"
+                                app:tint="@color/blue" />
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/major_id_input_section"
+                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                android:layout_width="200dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginEnd="16dp"
+                                android:layout_toStartOf="@id/switchActive"
+                                android:layout_toEndOf="@id/radar_icon"
+                                android:padding="2dp"
+                                android:textColorHint="@color/grey"
+                                app:boxStrokeErrorColor="@color/red"
+                                app:endIconMode="clear_text"
+                                app:endIconTint="@color/grey"
+                                app:errorIconDrawable="@null"
+                                app:errorIconTint="@color/red"
+                                app:errorTextColor="@color/black"
+                                app:hintEnabled="false"
+                                app:hintTextColor="@color/grey"
+                                app:placeholderTextColor="@color/black">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/major_id_input_text"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="32dp"
+                                    android:background="@drawable/light_grey_no_round_button"
+                                    android:ellipsize="end"
+                                    android:hint="@string/hint_beacon"
+                                    android:inputType="text"
+                                    android:maxLines="1"
+                                    android:padding="5dp"
+                                    android:singleLine="true"
+                                    android:textColor="@color/black"
+                                    android:textColorHighlight="@color/grey"
+                                    android:textColorHint="@color/grey"
+                                    android:textColorLink="@color/blue"
+                                    android:textCursorDrawable="@drawable/color_cursor"
+                                    android:textSize="14sp" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <Switch
+                                android:layout_centerVertical="true"
+                                android:id="@+id/switchActive"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:enabled="true"
+                                android:text="@string/switch_active"
+                                android:textColor="@color/blue"
+                                android:textSize="14sp"
+                                tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+
+                        </RelativeLayout>
+
+                        <View
+                            android:id="@+id/beacon_line"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_below="@id/beacon_title_section"
+                            android:layout_marginBottom="16dp"
+                            android:background="@color/grey_light" />
+
+                        <RelativeLayout
+                            android:id="@+id/beacon_info_section"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/beacon_line">
+
+                            <RelativeLayout
+                                android:id="@+id/beacon_location_section"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="16dp">
+
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/location_input_section"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:padding="2dp"
+                                    android:textColorHint="@color/grey"
+                                    app:boxStrokeErrorColor="@color/red"
+                                    app:endIconMode="clear_text"
+                                    app:endIconTint="@color/grey"
+                                    app:errorIconDrawable="@null"
+                                    app:errorIconTint="@color/red"
+                                    app:errorTextColor="@color/black"
+                                    app:hintEnabled="false"
+                                    app:hintTextColor="@color/grey"
+                                    app:placeholderTextColor="@color/black">
+
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/location_input_text"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="32dp"
+                                        android:background="@drawable/light_grey_no_round_button"
+                                        android:gravity="top"
+                                        android:hint="@string/hint_location"
+                                        android:inputType="text"
+                                        android:padding="5dp"
+                                        android:singleLine="true"
+                                        android:textColor="@color/black"
+                                        android:textColorHighlight="@color/grey"
+                                        android:textColorHint="@color/grey"
+                                        android:textColorLink="@color/blue"
+                                        android:textCursorDrawable="@drawable/color_cursor"
+                                        android:textSize="14sp" />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/beacon_note_section"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/beacon_location_section"
+                                android:layout_marginBottom="16dp">
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/note_input_section"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:padding="2dp"
+                                    android:textColorHint="@color/grey"
+                                    app:boxStrokeErrorColor="@color/red"
+                                    app:counterEnabled="true"
+                                    app:counterMaxLength="35"
+                                    app:endIconMode="clear_text"
+                                    app:endIconTint="@color/grey"
+                                    app:errorIconDrawable="@null"
+                                    app:errorIconTint="@color/red"
+                                    app:errorTextColor="@color/black"
+                                    app:hintEnabled="false"
+                                    app:hintTextColor="@color/grey"
+                                    app:placeholderTextColor="@color/black">
+
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/note_input_text"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="64dp"
+                                        android:background="@drawable/light_grey_no_round_button"
+                                        android:gravity="top"
+                                        android:hint="@string/hint_note"
+                                        android:inputType="textMultiLine"
+                                        android:padding="5dp"
+                                        android:textColor="@color/black"
+                                        android:textColorHighlight="@color/grey"
+                                        android:textColorHint="@color/grey"
+                                        android:textColorLink="@color/blue"
+                                        android:textCursorDrawable="@drawable/color_cursor"
+                                        android:textSize="14sp" />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+                            </RelativeLayout>
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/add_beacon"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_below="@id/beacon_info_section"
+                            android:background="@drawable/blue_no_round_button"
+                            android:elevation="1dp"
+                            android:outlineAmbientShadowColor="@color/grey"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="16dp">
+
+                            <TextView
+                                android:id="@+id/add_beacon_text"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:ellipsize="end"
+                                android:maxLines="1"
+                                android:textAlignment="center"
+                                android:textColor="@color/white"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/cancel_beacon"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_below="@id/add_beacon"
+                            android:layout_marginTop="16dp"
+                            android:background="@drawable/light_grey_no_round_button"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="16dp">
+
+                            <TextView
+                                android:id="@+id/cancel_beacons_text"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:ellipsize="end"
+                                android:maxLines="1"
+                                android:text="@string/cancel"
+                                android:textAlignment="center"
+                                android:textColor="@color/blue"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+                        </RelativeLayout>
+
+                    </RelativeLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+            </RelativeLayout>
+
+        </ScrollView>
+
+    </RelativeLayout>
+
+</RelativeLayout>

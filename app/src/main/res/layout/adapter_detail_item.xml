@@ -1,0 +1,57 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/d_section"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/time"
+            android:padding="8dp"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:textAlignment="textStart"
+            android:textColor="@color/blue"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/val_1"
+            android:padding="8dp"
+            android:layout_width="0dp"
+            android:textAlignment="textStart"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/blue"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/val_2"
+            android:padding="8dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textColor="@color/blue"
+            android:textSize="12sp"
+            android:textAlignment="textStart"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/beacon_line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/d_section"
+        android:background="@color/grey_light" />
+</RelativeLayout>
+
+

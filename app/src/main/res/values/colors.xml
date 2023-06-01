@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="blue">#051F47</color>
+    <color name="blue_light">#3361FB</color>
+    <color name="yellow">#FECE2F</color>
+    <color name="red">#FC0D1B</color>
+    <color name="red_alt">#C60044</color>
+    <color name="green">#2AFD89</color>
+    <color name="yellow_100">#FFCA33</color>
+    <color name="yellow_20">#FFF9E9</color>
+    <color name="green_100">#2ACC38</color>
+    <color name="green_20">#E9FAEB</color>
+    <color name="red_100">#FF0000</color>
+    <color name="red_20">#FFE5E5</color>
+    <color name="black">#000000</color>
+    <color name="grey">#7D8FB3</color>
+    <color name="grey_calendar">#4D5E80</color>
+    <color name="grey_light">#DADEE6</color>
+    <color name="grey_light_calendar">#EDEFF2</color>
+    <color name="grey_lighter">#F7F8FA</color>
+    <color name="white">#FFFFFF</color>
+    <color name="transparent_50_black">#80303030</color>
+    <color name="transparent_20_black">#33303030</color>
+
+    <color name="risk_very_low">#00E400</color>
+    <color name="risk_low">#FFFF00</color>
+    <color name="risk_medium">#FF7E00</color>
+    <color name="risk_high">#DC152A</color>
+    <color name="risk_very_high">#7E0023</color>
+
+</resources>

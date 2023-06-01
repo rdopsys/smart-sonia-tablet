@@ -1,0 +1,954 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.WorkerBoard"
+    android:focusable="true"
+    android:clickable="true">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="32dp">
+
+            <TextView
+                android:id="@+id/page_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/loading_refresh_section"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:text="@string/history_page_title"
+                android:textColor="@color/blue"
+                android:textSize="40sp"
+                android:textStyle="bold" />
+
+            <RelativeLayout
+                android:id="@+id/loading_refresh_section"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true">
+                <ProgressBar
+                    android:visibility="gone"
+                    android:id="@+id/loading"
+                    android:layout_width="40dp"
+                    android:layout_height="52dp"
+                    android:layout_marginStart="16dp"
+                    android:indeterminateTint="@color/blue" />
+
+                <ImageView
+                    android:visibility="gone"
+                    android:id="@+id/refresh_button"
+                    android:layout_width="40dp"
+                    android:layout_height="52dp"
+                    android:scaleType="fitCenter"
+                    android:layout_marginStart="16dp"
+                    android:src="@drawable/ic_baseline_refresh_24"
+                    app:tint="@color/blue" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_marginTop="24dp"
+                android:layout_below="@id/page_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/white_no_round_button_normal_round_top">
+
+                <RelativeLayout
+                    android:id="@+id/calendar_month_section"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:gravity="center"
+                    android:padding="2dp">
+
+                    <ImageView
+                        android:id="@+id/month_prev"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_calendar_prev" />
+
+                    <TextView
+                        android:id="@+id/month_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toEndOf="@id/month_prev"
+                        android:ellipsize="end"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:textAlignment="center"
+                        android:textColor="@color/blue"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/month_next"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_toEndOf="@id/month_text"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_calendar_next" />
+
+                </RelativeLayout>
+                <RelativeLayout
+                    android:id="@+id/recycler_view_calendar_section"
+                    android:layout_below="@id/calendar_month_section"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="2dp"
+                    android:background="@drawable/calendar_grey_outline_section_out">
+
+
+                    <LinearLayout
+                        android:id="@+id/calendar_dates_section"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+                        <TextView
+                            android:id="@+id/monday"
+                            android:padding="8dp"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:gravity="center"
+                            android:background="@drawable/calendar_grey_outline_section"
+                            android:layout_weight="1"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:text="@string/monday"
+                            android:textAlignment="center"
+                            android:textColor="@color/grey_calendar"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/tuesday"
+                            android:padding="8dp"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:gravity="center"
+                            android:background="@drawable/calendar_grey_outline_section"
+                            android:layout_weight="1"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:text="@string/tuesday"
+                            android:textAlignment="center"
+                            android:textColor="@color/grey_calendar"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/wednesday"
+                            android:padding="8dp"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:gravity="center"
+                            android:background="@drawable/calendar_grey_outline_section"
+                            android:layout_weight="1"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:text="@string/wednesday"
+                            android:textAlignment="center"
+                            android:textColor="@color/grey_calendar"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/thursday"
+                            android:padding="8dp"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:gravity="center"
+                            android:background="@drawable/calendar_grey_outline_section"
+                            android:layout_weight="1"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:text="@string/thursday"
+                            android:textAlignment="center"
+                            android:textColor="@color/grey_calendar"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/friday"
+                            android:padding="8dp"
+                            android:layout_width="0dp"
+                            android:textAlignment="center"
+                            android:layout_height="80dp"
+                            android:gravity="center"
+                            android:background="@drawable/calendar_grey_outline_section"
+                            android:layout_weight="1"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:text="@string/friday"
+                            android:textColor="@color/grey_calendar"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/saturday"
+                            android:padding="8dp"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:gravity="center"
+                            android:background="@drawable/calendar_grey_outline_section"
+                            android:layout_weight="1"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:textColor="@color/grey_calendar"
+                            android:text="@string/saturday"
+                            android:textSize="14sp"
+                            android:textAlignment="center"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/sunday"
+                            android:padding="8dp"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:gravity="center"
+                            android:background="@drawable/calendar_grey_outline_section"
+                            android:layout_weight="1"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:textAlignment="center"
+                            android:textColor="@color/grey_calendar"
+                            android:text="@string/sunday"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recycler_view_calendar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/calendar_dates_section"
+                        android:nestedScrollingEnabled="true" />
+
+                </RelativeLayout>
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- CALENDAR DIALOG -->
+    <RelativeLayout
+        android:visibility="gone"
+        android:id="@+id/calendar_dialog_section"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="@color/transparent_50_black"
+        android:paddingStart="32dp"
+        android:paddingEnd="32dp"
+        android:paddingBottom="32dp"
+        android:paddingTop="32dp">
+
+        <ScrollView
+            android:visibility="gone"
+            android:id="@+id/calendar_dialog_section_inner"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:outlineSpotShadowColor="@color/grey"
+            android:scrollbars="none"
+            android:fillViewport="true"
+            android:clickable="true"
+            android:focusable="true">
+            <RelativeLayout
+                android:paddingStart="32dp"
+                android:paddingEnd="100dp"
+                android:paddingBottom="32dp"
+                android:paddingTop="32dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="true">
+
+                <!-- SOS NOTIFICATIONS -->
+                <RelativeLayout
+                    android:visibility="gone"
+                    android:id="@+id/recycler_view_sos_alerts_section_calendar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/white_no_round_button_normal">
+                    <TextView
+                        android:id="@+id/calendar_sos_dialog_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:maxLines="2"
+                        android:layout_marginBottom="32dp"
+                        android:text="@string/sos_notifications_calendar"
+                        android:textColor="@color/blue"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+                    <LinearLayout
+                        android:layout_below="@id/calendar_sos_dialog_text"
+                        android:id="@+id/sos_alerts_info_title_section_calendar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="16dp"
+                        android:paddingStart="32dp"
+                        android:paddingEnd="32dp"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:id="@+id/sos_alert_worker_calendar"
+                            android:padding="8dp"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:text="@string/worker_name"
+                            android:textAlignment="textStart"
+                            android:textColor="@color/grey"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/sos_alert_location_calendar"
+                            android:padding="8dp"
+                            android:layout_width="0dp"
+                            android:textAlignment="textStart"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:text="@string/location"
+                            android:textColor="@color/grey"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/sos_alert_time_calendar"
+                            android:padding="8dp"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:textColor="@color/grey"
+                            android:text="@string/time"
+                            android:textSize="14sp"
+                            android:textAlignment="textStart"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/sos_alert_date_calendar_text"
+                            android:padding="8dp"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:textAlignment="textStart"
+                            android:textColor="@color/grey"
+                            android:text="@string/date"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recycler_view_sos_alerts_calendar"
+                        android:layout_width="match_parent"
+                        android:layout_height="410dp"
+                        android:layout_below="@id/sos_alerts_info_title_section_calendar"
+                        android:nestedScrollingEnabled="true" />
+                </RelativeLayout>
+                <!--ALERTS -->
+                <RelativeLayout
+                    android:visibility="gone"
+                    android:id="@+id/recycler_view_alerts_section_calendar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/calendar_alerts_dialog_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:maxLines="2"
+                        android:layout_marginBottom="32dp"
+                        android:text="@string/alerts_calendar"
+                        android:textColor="@color/blue"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:layout_below="@id/calendar_alerts_dialog_text"
+                        android:id="@+id/recycler_view_alerts_calendar"
+                        android:layout_width="match_parent"
+                        android:layout_height="470dp"
+                        android:nestedScrollingEnabled="true" />
+                </RelativeLayout>
+
+                <!-- ACCIDENTS -->
+                <RelativeLayout
+                    android:visibility="gone"
+                    android:id="@+id/recycler_view_accidents_section_calendar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/calendar_accidents_dialog_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:maxLines="2"
+                        android:layout_marginBottom="32dp"
+                        android:text="@string/accidents_calendar"
+                        android:textColor="@color/blue"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:layout_below="@id/calendar_accidents_dialog_text"
+                        android:id="@+id/recycler_view_accidents_calendar"
+                        android:layout_width="match_parent"
+                        android:layout_height="470dp"
+                        android:nestedScrollingEnabled="true" />
+                </RelativeLayout>
+
+            </RelativeLayout>
+        </ScrollView>
+        <ImageView
+            android:id="@+id/close_calendar_dialog_section"
+            android:layout_margin="32dp"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:scaleType="fitCenter"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/ic_close"
+            app:tint="@color/blue"/>
+
+    </RelativeLayout>
+
+    <!-- ACCIDENT DETAILS-->
+    <RelativeLayout
+        android:visibility="gone"
+        android:id="@+id/background_accident_details_form_section"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/transparent_20_black"
+        android:clickable="true"
+        android:focusable="true">
+
+        <ScrollView
+            android:visibility="gone"
+            android:id="@+id/accident_details_section"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="16dp"
+                    android:background="@color/white"
+                    android:outlineAmbientShadowColor="@color/grey"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="5dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingStart="56dp"
+                        android:paddingTop="32dp"
+                        android:paddingEnd="56dp"
+                        android:paddingBottom="32dp">
+
+                        <ImageView
+                            android:id="@+id/accident_details_icon"
+                            android:layout_width="56dp"
+                            android:layout_height="56dp"
+                            android:layout_below="@id/accident_details"
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginBottom="16dp"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/ic_accident_active" />
+
+                        <TextView
+                            android:id="@+id/accident_details"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:layout_marginBottom="16dp"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:layout_toStartOf="@id/close_details"
+                            android:layout_marginEnd="16dp"
+                            android:text="@string/accidents_insights"
+                            android:textColor="@color/blue"
+                            android:textSize="40sp"
+                            android:textStyle="bold" />
+                        <ImageView
+                            android:layout_marginTop="12dp"
+                            android:padding="12dp"
+                            android:id="@+id/close_details"
+                            android:layout_width="56dp"
+                            android:layout_height="56dp"
+                            android:scaleType="fitCenter"
+                            android:layout_alignParentEnd="true"
+                            android:src="@drawable/ic_close"
+                            app:tint="@color/blue"/>
+
+                        <TextView
+                            android:id="@+id/accident_details_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/accident_details"
+                            android:layout_marginTop="6dp"
+                            android:layout_toEndOf="@id/accident_details_icon"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:textColor="@color/blue"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/accident_details_note"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/accident_details_title"
+                            android:layout_toEndOf="@id/accident_details_icon"
+                            android:textColor="@color/grey"
+                            android:textSize="12sp" />
+
+                        <RelativeLayout
+                            android:id="@+id/accident_details_main_info_section"
+                            android:layout_width="match_parent"
+                            android:layout_height="72dp"
+                            android:layout_below="@id/accident_details_note"
+                            android:layout_marginTop="32dp"
+                            android:layout_marginBottom="32dp"
+                            android:background="@drawable/light_grey_no_round_button">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:orientation="horizontal">
+
+                                <RelativeLayout
+                                    android:id="@+id/worker_name_section"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginEnd="16dp"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:padding="8dp">
+
+                                    <TextView
+                                        android:id="@+id/ac_name"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_centerHorizontal="true"
+                                        android:ellipsize="end"
+                                        android:maxLines="1"
+                                        android:text="@string/accidents_worker_name"
+                                        android:textAlignment="center"
+                                        android:textColor="@color/grey"
+                                        android:textSize="14sp"
+                                        android:textStyle="bold" />
+
+                                    <TextView
+                                        android:id="@+id/ac_name_value"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_below="@id/ac_name"
+                                        android:layout_centerHorizontal="true"
+                                        android:ellipsize="end"
+                                        android:maxLines="1"
+                                        android:textAlignment="center"
+                                        android:textColor="@color/blue"
+                                        android:textSize="14sp"
+                                        android:textStyle="bold" />
+
+                                </RelativeLayout>
+
+                                <RelativeLayout
+                                    android:layout_width="2dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginTop="8dp"
+                                    android:layout_marginBottom="8dp"
+                                    android:background="@color/grey_light" />
+
+                                <RelativeLayout
+                                    android:id="@+id/time_section"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="16dp"
+                                    android:layout_marginEnd="16dp"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:padding="8dp">
+
+                                    <TextView
+                                        android:id="@+id/ac_time"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_centerHorizontal="true"
+                                        android:ellipsize="end"
+                                        android:maxLines="1"
+                                        android:text="@string/accidents_time"
+                                        android:textAlignment="center"
+                                        android:textColor="@color/grey"
+                                        android:textSize="14sp"
+                                        android:textStyle="bold" />
+
+                                    <TextView
+                                        android:id="@+id/ac_name_time"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_below="@id/ac_time"
+                                        android:layout_centerHorizontal="true"
+                                        android:ellipsize="end"
+                                        android:maxLines="1"
+                                        android:textAlignment="center"
+                                        android:textColor="@color/blue"
+                                        android:textSize="14sp"
+                                        android:textStyle="bold" />
+                                </RelativeLayout>
+
+                                <RelativeLayout
+                                    android:layout_width="2dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginTop="8dp"
+                                    android:layout_marginBottom="8dp"
+                                    android:background="@color/grey_light" />
+
+                                <RelativeLayout
+                                    android:id="@+id/zone_section"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="16dp"
+                                    android:layout_marginEnd="16dp"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:padding="8dp">
+
+                                    <TextView
+                                        android:id="@+id/ac_zone"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_centerHorizontal="true"
+                                        android:ellipsize="end"
+                                        android:maxLines="1"
+                                        android:text="@string/zone_state"
+                                        android:textAlignment="center"
+                                        android:textColor="@color/grey"
+                                        android:textSize="14sp"
+                                        android:textStyle="bold" />
+
+                                    <TextView
+                                        android:id="@+id/ac_name_zone"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_below="@id/ac_zone"
+                                        android:layout_centerHorizontal="true"
+                                        android:ellipsize="end"
+                                        android:maxLines="1"
+                                        android:textAlignment="center"
+                                        android:textColor="@color/blue"
+                                        android:textSize="14sp"
+                                        android:textStyle="bold" />
+                                </RelativeLayout>
+
+
+                            </LinearLayout>
+
+                        </RelativeLayout>
+
+                        <TextView
+                            android:id="@+id/accident_more_info_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/accident_details_main_info_section"
+                            android:layout_marginBottom="16dp"
+                            android:text="@string/relevant_worker_data"
+                            android:textColor="@color/grey"
+                            android:textSize="12sp" />
+
+                        <LinearLayout
+                            android:id="@+id/accident_details_filters"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/accident_more_info_title"
+                            android:layout_marginBottom="32dp"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <RelativeLayout
+                                android:id="@+id/alerts_filter_button"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="16dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/blue_no_round_button"
+                                android:paddingStart="8dp"
+                                android:paddingTop="8dp"
+                                android:paddingEnd="8dp"
+                                android:paddingBottom="8dp">
+
+                                <TextView
+                                    android:id="@+id/alerts_filter_text"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerInParent="true"
+                                    android:ellipsize="end"
+                                    android:maxLines="1"
+                                    android:text="@string/alerts_title_only"
+                                    android:textAlignment="center"
+                                    android:textColor="@color/white"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/recommendations_filter_button"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="16dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/light_grey_no_round_button"
+                                android:paddingStart="8dp"
+                                android:paddingTop="8dp"
+                                android:paddingEnd="8dp"
+                                android:paddingBottom="8dp">
+
+                                <TextView
+                                    android:id="@+id/recommendations_filter_text"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerInParent="true"
+                                    android:ellipsize="end"
+                                    android:maxLines="1"
+                                    android:text="@string/recommendations_title_only"
+                                    android:textAlignment="center"
+                                    android:textColor="@color/grey"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/messages_filter_button"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="16dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/light_grey_no_round_button"
+                                android:paddingStart="8dp"
+                                android:paddingTop="8dp"
+                                android:paddingEnd="8dp"
+                                android:paddingBottom="8dp">
+
+                                <TextView
+                                    android:id="@+id/messages_filter_text"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerInParent="true"
+                                    android:ellipsize="end"
+                                    android:maxLines="1"
+                                    android:text="@string/message_title_only"
+                                    android:textAlignment="center"
+                                    android:textColor="@color/grey"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/sos_filter_button"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="16dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/light_grey_no_round_button"
+                                android:paddingStart="8dp"
+                                android:paddingTop="8dp"
+                                android:paddingEnd="8dp"
+                                android:paddingBottom="8dp">
+
+                                <TextView
+                                    android:id="@+id/sos_filter_text"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerInParent="true"
+                                    android:ellipsize="end"
+                                    android:maxLines="1"
+                                    android:text="@string/sos_page_title"
+                                    android:textAlignment="center"
+                                    android:textColor="@color/grey"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/heart_rate_filter_button"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:background="@drawable/light_grey_no_round_button"
+                                android:paddingStart="8dp"
+                                android:paddingTop="8dp"
+                                android:paddingEnd="8dp"
+                                android:paddingBottom="8dp">
+
+                                <TextView
+                                    android:id="@+id/heart_rate_filter_text"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerInParent="true"
+                                    android:ellipsize="end"
+                                    android:maxLines="1"
+                                    android:text="@string/heart_rate"
+                                    android:textAlignment="center"
+                                    android:textColor="@color/grey"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
+                            </RelativeLayout>
+
+                        </LinearLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/accident_details_window"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/accident_details_filters"
+                            android:background="@drawable/light_grey_no_round_button"
+                            android:minHeight="180dp"
+                            android:paddingTop="16dp"
+                            android:paddingBottom="16dp">
+
+                            <TextView
+                                android:id="@+id/no_data"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:maxLines="1"
+                                android:padding="16dp"
+                                android:layout_marginTop="32dp"
+                                android:text="@string/no_data"
+                                android:textAlignment="center"
+                                android:textColor="@color/grey"
+                                android:textSize="14sp"
+                                android:textStyle="bold"
+                                android:visibility="gone" />
+
+                            <LinearLayout
+                                android:visibility="gone"
+                                android:id="@+id/info_detail_title_section"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:paddingStart="16dp"
+                                android:paddingEnd="16dp">
+
+                                <TextView
+                                    android:id="@+id/info_detail_time"
+                                    android:layout_width="100dp"
+                                    android:layout_height="wrap_content"
+                                    android:ellipsize="end"
+                                    android:maxLines="1"
+                                    android:padding="8dp"
+                                    android:text="@string/time"
+                                    android:textAlignment="textStart"
+                                    android:textColor="@color/grey"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/info_detail_val1"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:ellipsize="end"
+                                    android:maxLines="1"
+                                    android:padding="8dp"
+                                    android:textAlignment="textStart"
+                                    android:textColor="@color/grey"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/info_detail_val2"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:ellipsize="end"
+                                    android:maxLines="1"
+                                    android:padding="8dp"
+                                    android:textAlignment="textStart"
+                                    android:textColor="@color/grey"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:layout_below="@id/info_detail_title_section"
+                                android:id="@+id/recycler_view_details_sos"
+                                android:layout_width="match_parent"
+                                android:layout_height="410dp"
+                                android:nestedScrollingEnabled="true"
+                                android:scrollbars="vertical"
+                                android:visibility="gone" />
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:layout_below="@id/info_detail_title_section"
+                                android:id="@+id/recycler_view_details_alerts"
+                                android:layout_width="match_parent"
+                                android:layout_height="410dp"
+                                android:nestedScrollingEnabled="true"
+                                android:scrollbars="vertical"
+                                android:visibility="gone" />
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:layout_below="@id/info_detail_title_section"
+                                android:id="@+id/recycler_view_details_recommendations"
+                                android:layout_width="match_parent"
+                                android:layout_height="410dp"
+                                android:nestedScrollingEnabled="true"
+                                android:scrollbars="vertical"
+                                android:visibility="gone" />
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:layout_below="@id/info_detail_title_section"
+                                android:id="@+id/recycler_view_details_heart_rate"
+                                android:layout_width="match_parent"
+                                android:layout_height="410dp"
+                                android:scrollbars="vertical"
+                                android:nestedScrollingEnabled="true"
+                                android:visibility="gone" />
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:layout_below="@id/info_detail_title_section"
+                                android:id="@+id/recycler_view_details_messages"
+                                android:layout_width="match_parent"
+                                android:layout_height="410dp"
+                                android:nestedScrollingEnabled="true"
+                                android:scrollbars="vertical"
+                                android:visibility="gone" />
+                        </RelativeLayout>
+                    </RelativeLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+            </RelativeLayout>
+
+        </ScrollView>
+
+    </RelativeLayout>
+
+</RelativeLayout>

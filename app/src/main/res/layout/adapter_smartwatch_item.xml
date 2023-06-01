@@ -1,0 +1,27 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingStart="8dp"
+    android:paddingEnd="8dp">
+
+    <TextView
+        android:padding="8dp"
+        android:id="@+id/watch_code"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:background="@drawable/white_no_round_button"
+        android:textColor="@color/blue"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+    <View
+        android:layout_below="@id/watch_code"
+        android:id="@+id/beacon_line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/grey_light" />
+
+</RelativeLayout>
+

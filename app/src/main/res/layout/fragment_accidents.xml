@@ -1,0 +1,937 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.WorkerBoard"
+    android:focusable="true"
+    android:clickable="true">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <RelativeLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/page_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/loading_refresh_section"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:paddingStart="32dp"
+                android:paddingTop="32dp"
+                android:text="@string/accident_page_title"
+                android:textColor="@color/blue"
+                android:textSize="40sp"
+                android:textStyle="bold" />
+            <RelativeLayout
+                android:paddingTop="32dp"
+                android:paddingEnd="32dp"
+                android:id="@+id/loading_refresh_section"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true">
+                <ProgressBar
+                    android:visibility="gone"
+                    android:id="@+id/loading"
+                    android:layout_width="40dp"
+                    android:layout_height="52dp"
+                    android:layout_marginStart="16dp"
+                    android:indeterminateTint="@color/blue" />
+
+                <ImageView
+                    android:visibility="gone"
+                    android:id="@+id/refresh_button"
+                    android:layout_width="40dp"
+                    android:layout_height="52dp"
+                    android:scaleType="fitCenter"
+                    android:layout_marginStart="16dp"
+                    android:src="@drawable/ic_baseline_refresh_24"
+                    app:tint="@color/blue" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/selected_worker_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/page_title"
+                android:layout_marginTop="16dp"
+                android:layout_toStartOf="@id/loading_refresh_section"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:paddingStart="32dp"
+                android:paddingEnd="32dp"
+                android:text="@string/select_worker_accidents"
+                android:textColor="@color/blue"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view_send_accidents"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/selected_worker_title"
+                android:layout_marginTop="8dp"
+                android:nestedScrollingEnabled="true" />
+
+            <TextView
+                android:id="@+id/accidents_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/recycler_view_send_accidents"
+                android:layout_marginTop="16dp"
+                android:layout_toStartOf="@id/loading_refresh_section"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:paddingStart="32dp"
+                android:paddingEnd="32dp"
+                android:text="@string/all_accidents_title"
+                android:textColor="@color/blue"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view_accidents"
+                android:layout_width="match_parent"
+                android:layout_height="320dp"
+                android:layout_below="@id/accidents_title"
+                android:layout_marginTop="8dp"
+                android:nestedScrollingEnabled="true"
+                android:paddingStart="24dp"
+                android:paddingEnd="24dp" />
+
+            <TextView
+                android:visibility="gone"
+                android:id="@+id/no_accidents"
+                android:layout_marginTop="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/accidents_title"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:padding="16dp"
+                android:text="@string/no_accidents"
+                android:textAlignment="center"
+                android:textColor="@color/grey"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- ADD ACCIDENT-->
+    <RelativeLayout
+        android:visibility="gone"
+        android:id="@+id/background_add_reports_form_section"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:background="@color/transparent_20_black"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:paddingTop="0dp">
+
+        <ScrollView
+            android:visibility="gone"
+            android:id="@+id/add_report_form_section"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+
+            <RelativeLayout
+                android:id="@+id/add_form"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="110dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@color/white"
+                    android:outlineAmbientShadowColor="@color/grey"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="5dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingStart="56dp"
+                        android:paddingEnd="56dp"
+                        android:paddingTop="32dp"
+                        android:paddingBottom="32dp">
+
+                        <ImageView
+                            android:id="@+id/send_report_icon"
+                            android:layout_width="56dp"
+                            android:layout_height="56dp"
+                            android:layout_marginEnd="16dp"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/ic_accident_active" />
+
+                        <TextView
+                            android:id="@+id/add_report_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:layout_toEndOf="@id/send_report_icon"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:text="@string/report_accident_to"
+                            android:textColor="@color/blue"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                        <RelativeLayout
+                            android:layout_marginTop="16dp"
+                            android:id="@+id/report_title_section"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_toStartOf="@id/accident_time_section"
+                            android:layout_below="@id/send_report_icon"
+                            android:layout_marginBottom="16dp">
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/report_title_input_section"
+                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:padding="2dp"
+                                android:textColorHint="@color/grey"
+                                app:boxStrokeErrorColor="@color/red"
+                                app:endIconMode="clear_text"
+                                app:endIconTint="@color/grey"
+                                app:errorIconDrawable="@null"
+                                app:errorIconTint="@color/red"
+                                app:errorTextColor="@color/black"
+                                app:hintEnabled="false"
+                                app:hintTextColor="@color/grey"
+                                app:placeholderTextColor="@color/black">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/report_title_input_text"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="50dp"
+                                    android:background="@drawable/light_grey_no_round_button"
+                                    android:ellipsize="end"
+                                    android:hint="@string/report_title_hint"
+                                    android:inputType="text"
+                                    android:maxLines="1"
+                                    android:paddingStart="16dp"
+                                    android:singleLine="true"
+                                    android:textColor="@color/black"
+                                    android:textColorHighlight="@color/grey"
+                                    android:textColorHint="@color/grey"
+                                    android:textColorLink="@color/blue"
+                                    android:textCursorDrawable="@drawable/color_cursor"
+                                    android:textSize="14sp" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/accident_time_section"
+                            android:layout_alignParentEnd="true"
+                            android:layout_width="100dp"
+                            android:layout_height="50dp"
+                            android:layout_below="@id/send_report_icon"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginStart="16dp"
+                            android:background="@drawable/light_grey_no_round_button"
+                            android:paddingStart="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingEnd="8dp"
+                            android:paddingBottom="8dp">
+
+                            <TextView
+                                android:id="@+id/accident_selected_time"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:ellipsize="end"
+                                android:maxLines="1"
+                                android:textAlignment="center"
+                                android:textColor="@color/blue"
+                                android:textSize="14sp" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/report_info_section"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/report_title_section">
+
+                            <RelativeLayout
+                                android:id="@+id/report_message_section"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="16dp">
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/report_message_input_section"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:padding="2dp"
+                                    android:textColorHint="@color/grey"
+                                    app:boxStrokeErrorColor="@color/red"
+                                    app:endIconMode="clear_text"
+                                    app:endIconTint="@color/grey"
+                                    app:errorIconDrawable="@null"
+                                    app:errorIconTint="@color/red"
+                                    app:errorTextColor="@color/black"
+                                    app:hintEnabled="false"
+                                    app:hintTextColor="@color/grey"
+                                    app:placeholderTextColor="@color/black">
+
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/report_message_input_text"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="150dp"
+                                        android:background="@drawable/light_grey_no_round_button"
+                                        android:gravity="top"
+                                        android:hint="@string/report_info_hint"
+                                        android:inputType="textMultiLine"
+                                        android:paddingStart="16dp"
+                                        android:paddingTop="8dp"
+                                        android:textColor="@color/black"
+                                        android:textColorHighlight="@color/grey"
+                                        android:textColorHint="@color/grey"
+                                        android:textColorLink="@color/blue"
+                                        android:textCursorDrawable="@drawable/color_cursor"
+                                        android:textSize="14sp" />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+                            </RelativeLayout>
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/accident_additional_settings"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/report_info_section">
+
+                            <Switch
+                                android:id="@+id/switchZone"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="4dp"
+                                android:enabled="true"
+                                android:text="@string/zone_state"
+                                android:textColor="@color/blue"
+                                android:textSize="14sp"
+                                tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/accident_additional_settings"
+                            android:layout_marginTop="16dp"
+                            android:gravity="center">
+
+                            <RelativeLayout
+                                android:id="@+id/send_report"
+                                android:layout_width="150dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="16dp"
+                                android:background="@drawable/blue_no_round_button"
+                                android:elevation="1dp"
+                                android:outlineAmbientShadowColor="@color/grey"
+                                android:paddingStart="8dp"
+                                android:paddingTop="8dp"
+                                android:paddingEnd="8dp"
+                                android:paddingBottom="8dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerInParent="true"
+                                    android:ellipsize="end"
+                                    android:maxLines="1"
+                                    android:text="@string/report_action"
+                                    android:textAlignment="center"
+                                    android:textColor="@color/white"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/cancel_send_report"
+                                android:layout_width="150dp"
+                                android:layout_height="wrap_content"
+                                android:layout_toEndOf="@id/send_report"
+                                android:background="@drawable/light_grey_no_round_button"
+                                android:paddingStart="8dp"
+                                android:paddingTop="8dp"
+                                android:paddingEnd="8dp"
+                                android:paddingBottom="8dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerInParent="true"
+                                    android:ellipsize="end"
+                                    android:maxLines="1"
+                                    android:text="@string/cancel"
+                                    android:textAlignment="center"
+                                    android:textColor="@color/blue"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
+                            </RelativeLayout>
+                        </RelativeLayout>
+
+
+                    </RelativeLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+            </RelativeLayout>
+
+        </ScrollView>
+
+    </RelativeLayout>
+
+    <!-- ACCIDENT DETAILS-->
+    <RelativeLayout
+        android:visibility="gone"
+        android:id="@+id/background_accident_details_form_section"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/transparent_20_black"
+        android:clickable="true"
+        android:focusable="true">
+
+        <ScrollView
+            android:visibility="gone"
+            android:id="@+id/accident_details_section"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="16dp"
+                    android:background="@color/white"
+                    android:outlineAmbientShadowColor="@color/grey"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="5dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingStart="56dp"
+                        android:paddingTop="32dp"
+                        android:paddingEnd="56dp"
+                        android:paddingBottom="32dp">
+
+                        <ImageView
+                            android:id="@+id/accident_details_icon"
+                            android:layout_width="56dp"
+                            android:layout_height="56dp"
+                            android:layout_below="@id/accident_details"
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginBottom="16dp"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/ic_accident_active" />
+
+                        <TextView
+                            android:id="@+id/accident_details"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:layout_marginBottom="16dp"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:layout_toStartOf="@id/close_details"
+                            android:layout_marginEnd="16dp"
+                            android:text="@string/accidents_insights"
+                            android:textColor="@color/blue"
+                            android:textSize="40sp"
+                            android:textStyle="bold" />
+                        <ImageView
+                            android:layout_marginTop="12dp"
+                            android:padding="12dp"
+                            android:id="@+id/close_details"
+                            android:layout_width="56dp"
+                            android:layout_height="56dp"
+                            android:scaleType="fitCenter"
+                            android:layout_alignParentEnd="true"
+                            android:src="@drawable/ic_close"
+                            app:tint="@color/blue"/>
+
+                        <TextView
+                            android:id="@+id/accident_details_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/accident_details"
+                            android:layout_marginTop="6dp"
+                            android:layout_toEndOf="@id/accident_details_icon"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:textColor="@color/blue"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/accident_details_note"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/accident_details_title"
+                            android:layout_toEndOf="@id/accident_details_icon"
+                            android:textColor="@color/grey"
+                            android:textSize="12sp" />
+
+                        <RelativeLayout
+                            android:id="@+id/accident_details_main_info_section"
+                            android:layout_width="match_parent"
+                            android:layout_height="72dp"
+                            android:layout_below="@id/accident_details_note"
+                            android:layout_marginTop="32dp"
+                            android:layout_marginBottom="32dp"
+                            android:background="@drawable/light_grey_no_round_button">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:orientation="horizontal">
+
+                                <RelativeLayout
+                                    android:id="@+id/worker_name_section"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginEnd="16dp"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:padding="8dp">
+
+                                    <TextView
+                                        android:id="@+id/ac_name"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_centerHorizontal="true"
+                                        android:ellipsize="end"
+                                        android:maxLines="1"
+                                        android:text="@string/accidents_worker_name"
+                                        android:textAlignment="center"
+                                        android:textColor="@color/grey"
+                                        android:textSize="14sp"
+                                        android:textStyle="bold" />
+
+                                    <TextView
+                                        android:id="@+id/ac_name_value"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_below="@id/ac_name"
+                                        android:layout_centerHorizontal="true"
+                                        android:ellipsize="end"
+                                        android:maxLines="1"
+                                        android:textAlignment="center"
+                                        android:textColor="@color/blue"
+                                        android:textSize="14sp"
+                                        android:textStyle="bold" />
+
+                                </RelativeLayout>
+
+                                <RelativeLayout
+                                    android:layout_width="2dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginTop="8dp"
+                                    android:layout_marginBottom="8dp"
+                                    android:background="@color/grey_light" />
+
+                                <RelativeLayout
+                                    android:id="@+id/time_section"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="16dp"
+                                    android:layout_marginEnd="16dp"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:padding="8dp">
+
+                                    <TextView
+                                        android:id="@+id/ac_time"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_centerHorizontal="true"
+                                        android:ellipsize="end"
+                                        android:maxLines="1"
+                                        android:text="@string/accidents_time"
+                                        android:textAlignment="center"
+                                        android:textColor="@color/grey"
+                                        android:textSize="14sp"
+                                        android:textStyle="bold" />
+
+                                    <TextView
+                                        android:id="@+id/ac_name_time"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_below="@id/ac_time"
+                                        android:layout_centerHorizontal="true"
+                                        android:ellipsize="end"
+                                        android:maxLines="1"
+                                        android:textAlignment="center"
+                                        android:textColor="@color/blue"
+                                        android:textSize="14sp"
+                                        android:textStyle="bold" />
+                                </RelativeLayout>
+
+                                <RelativeLayout
+                                    android:layout_width="2dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginTop="8dp"
+                                    android:layout_marginBottom="8dp"
+                                    android:background="@color/grey_light" />
+
+                                <RelativeLayout
+                                    android:id="@+id/zone_section"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="16dp"
+                                    android:layout_marginEnd="16dp"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:padding="8dp">
+
+                                    <TextView
+                                        android:id="@+id/ac_zone"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_centerHorizontal="true"
+                                        android:ellipsize="end"
+                                        android:maxLines="1"
+                                        android:text="@string/zone_state"
+                                        android:textAlignment="center"
+                                        android:textColor="@color/grey"
+                                        android:textSize="14sp"
+                                        android:textStyle="bold" />
+
+                                    <TextView
+                                        android:id="@+id/ac_name_zone"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_below="@id/ac_zone"
+                                        android:layout_centerHorizontal="true"
+                                        android:ellipsize="end"
+                                        android:maxLines="1"
+                                        android:textAlignment="center"
+                                        android:textColor="@color/blue"
+                                        android:textSize="14sp"
+                                        android:textStyle="bold" />
+                                </RelativeLayout>
+
+
+                            </LinearLayout>
+
+                        </RelativeLayout>
+
+                        <TextView
+                            android:id="@+id/accident_more_info_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/accident_details_main_info_section"
+                            android:layout_marginBottom="16dp"
+                            android:text="@string/relevant_worker_data"
+                            android:textColor="@color/grey"
+                            android:textSize="12sp" />
+
+                        <LinearLayout
+                            android:id="@+id/accident_details_filters"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/accident_more_info_title"
+                            android:layout_marginBottom="32dp"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <RelativeLayout
+                                android:id="@+id/alerts_filter_button"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="16dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/blue_no_round_button"
+                                android:paddingStart="8dp"
+                                android:paddingTop="8dp"
+                                android:paddingEnd="8dp"
+                                android:paddingBottom="8dp">
+
+                                <TextView
+                                    android:id="@+id/alerts_filter_text"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerInParent="true"
+                                    android:ellipsize="end"
+                                    android:maxLines="1"
+                                    android:text="@string/alerts_title_only"
+                                    android:textAlignment="center"
+                                    android:textColor="@color/white"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/recommendations_filter_button"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="16dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/light_grey_no_round_button"
+                                android:paddingStart="8dp"
+                                android:paddingTop="8dp"
+                                android:paddingEnd="8dp"
+                                android:paddingBottom="8dp">
+
+                                <TextView
+                                    android:id="@+id/recommendations_filter_text"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerInParent="true"
+                                    android:ellipsize="end"
+                                    android:maxLines="1"
+                                    android:text="@string/recommendations_title_only"
+                                    android:textAlignment="center"
+                                    android:textColor="@color/grey"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/messages_filter_button"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="16dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/light_grey_no_round_button"
+                                android:paddingStart="8dp"
+                                android:paddingTop="8dp"
+                                android:paddingEnd="8dp"
+                                android:paddingBottom="8dp">
+
+                                <TextView
+                                    android:id="@+id/messages_filter_text"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerInParent="true"
+                                    android:ellipsize="end"
+                                    android:maxLines="1"
+                                    android:text="@string/message_title_only"
+                                    android:textAlignment="center"
+                                    android:textColor="@color/grey"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/sos_filter_button"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="16dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/light_grey_no_round_button"
+                                android:paddingStart="8dp"
+                                android:paddingTop="8dp"
+                                android:paddingEnd="8dp"
+                                android:paddingBottom="8dp">
+
+                                <TextView
+                                    android:id="@+id/sos_filter_text"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerInParent="true"
+                                    android:ellipsize="end"
+                                    android:maxLines="1"
+                                    android:text="@string/sos_page_title"
+                                    android:textAlignment="center"
+                                    android:textColor="@color/grey"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/heart_rate_filter_button"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:background="@drawable/light_grey_no_round_button"
+                                android:paddingStart="8dp"
+                                android:paddingTop="8dp"
+                                android:paddingEnd="8dp"
+                                android:paddingBottom="8dp">
+
+                                <TextView
+                                    android:id="@+id/heart_rate_filter_text"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerInParent="true"
+                                    android:ellipsize="end"
+                                    android:maxLines="1"
+                                    android:text="@string/heart_rate"
+                                    android:textAlignment="center"
+                                    android:textColor="@color/grey"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
+                            </RelativeLayout>
+
+                        </LinearLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/accident_details_window"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/accident_details_filters"
+                            android:background="@drawable/light_grey_no_round_button"
+                            android:minHeight="180dp"
+                            android:paddingTop="16dp"
+                            android:paddingBottom="16dp">
+
+                            <TextView
+                                android:id="@+id/no_data"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:maxLines="1"
+                                android:padding="16dp"
+                                android:layout_marginTop="32dp"
+                                android:text="@string/no_data"
+                                android:textAlignment="center"
+                                android:textColor="@color/grey"
+                                android:textSize="14sp"
+                                android:textStyle="bold"
+                                android:visibility="gone" />
+
+                            <LinearLayout
+                                android:visibility="gone"
+                                android:id="@+id/info_detail_title_section"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:paddingStart="16dp"
+                                android:paddingEnd="16dp">
+
+                                <TextView
+                                    android:id="@+id/info_detail_time"
+                                    android:layout_width="100dp"
+                                    android:layout_height="wrap_content"
+                                    android:ellipsize="end"
+                                    android:maxLines="1"
+                                    android:padding="8dp"
+                                    android:text="@string/time"
+                                    android:textAlignment="textStart"
+                                    android:textColor="@color/grey"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/info_detail_val1"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:ellipsize="end"
+                                    android:maxLines="1"
+                                    android:padding="8dp"
+                                    android:textAlignment="textStart"
+                                    android:textColor="@color/grey"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/info_detail_val2"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:ellipsize="end"
+                                    android:maxLines="1"
+                                    android:padding="8dp"
+                                    android:textAlignment="textStart"
+                                    android:textColor="@color/grey"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/recycler_view_details_sos"
+                                android:layout_width="match_parent"
+                                android:layout_height="410dp"
+                                android:scrollbars="vertical"
+                                android:layout_below="@id/info_detail_title_section"
+                                android:nestedScrollingEnabled="true"
+                                android:visibility="gone" />
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/recycler_view_details_alerts"
+                                android:layout_width="match_parent"
+                                android:layout_height="410dp"
+                                android:scrollbars="vertical"
+                                android:layout_below="@id/info_detail_title_section"
+                                android:nestedScrollingEnabled="true"
+                                android:visibility="gone" />
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/recycler_view_details_recommendations"
+                                android:layout_width="match_parent"
+                                android:layout_height="410dp"
+                                android:scrollbars="vertical"
+                                android:layout_below="@id/info_detail_title_section"
+                                android:nestedScrollingEnabled="true"
+                                android:visibility="gone" />
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/recycler_view_details_heart_rate"
+                                android:layout_width="match_parent"
+                                android:layout_height="410dp"
+                                android:scrollbars="vertical"
+                                android:layout_below="@id/info_detail_title_section"
+                                android:nestedScrollingEnabled="true"
+                                android:visibility="gone" />
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/recycler_view_details_messages"
+                                android:layout_width="match_parent"
+                                android:layout_height="410dp"
+                                android:scrollbars="vertical"
+                                android:layout_below="@id/info_detail_title_section"
+                                android:nestedScrollingEnabled="true"
+                                android:visibility="gone" />
+                        </RelativeLayout>
+                    </RelativeLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+            </RelativeLayout>
+
+        </ScrollView>
+
+    </RelativeLayout>
+
+</RelativeLayout>

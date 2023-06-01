@@ -1,0 +1,679 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.WorkerBoard"
+    android:focusable="true"
+    android:clickable="true"
+    android:id="@+id/test_fragment">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="32dp"
+            android:paddingEnd="32dp"
+            android:paddingTop="32dp">
+
+            <TextView
+                android:id="@+id/page_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/loading_refresh_section"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:text="@string/worker_board_page_title"
+                android:textColor="@color/blue"
+                android:textSize="40sp"
+                android:textStyle="bold" />
+
+            <RelativeLayout
+                android:id="@+id/loading_refresh_section"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true">
+                <ProgressBar
+                    android:visibility="gone"
+                    android:id="@+id/loading"
+                    android:layout_width="40dp"
+                    android:layout_height="52dp"
+                    android:layout_marginStart="16dp"
+                    android:indeterminateTint="@color/blue" />
+
+                <ImageView
+                    android:visibility="gone"
+                    android:id="@+id/refresh_button"
+                    android:layout_width="40dp"
+                    android:layout_height="52dp"
+                    android:scaleType="fitCenter"
+                    android:layout_marginStart="16dp"
+                    android:src="@drawable/ic_baseline_refresh_24"
+                    app:tint="@color/blue" />
+            </RelativeLayout>
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view_beacons"
+                android:layout_width="match_parent"
+                android:layout_height="480dp"
+                android:layout_below="@id/page_title"
+                android:layout_marginTop="16dp"
+                android:nestedScrollingEnabled="true" />
+        </RelativeLayout>
+
+    </androidx.core.widget.NestedScrollView>
+    <!-- CONFIRM WINDOW-->
+    <RelativeLayout
+        android:visibility="gone"
+        android:id="@+id/confirm_delete_section"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="@color/transparent_20_black"
+        android:paddingStart="56dp"
+        android:paddingEnd="56dp"
+        android:paddingBottom="56dp"
+        android:paddingTop="56dp">
+
+        <RelativeLayout
+            android:visibility="gone"
+            android:id="@+id/confirm_delete_inner_section"
+            android:layout_centerInParent="true"
+            android:background="@drawable/white_no_round_button_normal"
+            android:padding="56dp"
+            android:gravity="center"
+            android:elevation="6dp"
+            android:outlineAmbientShadowColor="@color/grey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:layout_centerHorizontal="true"
+                android:id="@+id/confirm_text_section"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/confirm_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:textAlignment="center"
+                    android:textColor="@color/blue"
+                    android:textSize="20sp"
+                    android:textStyle="bold"/>
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_below="@id/confirm_text"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true">
+                    <TextView
+                        android:id="@+id/confirm_yes"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16sp"
+                        android:background="@drawable/blue_no_round_button"
+                        android:ellipsize="end"
+                        android:gravity="center"
+                        android:maxLines="2"
+                        android:paddingStart="8dp"
+                        android:paddingTop="8dp"
+                        android:paddingEnd="8dp"
+                        android:paddingBottom="8dp"
+                        android:text="@string/yes"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/confirm_no"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@id/confirm_yes"
+                        android:background="@drawable/grey_outline_no_round_button"
+                        android:ellipsize="end"
+                        android:gravity="center"
+                        android:maxLines="2"
+                        android:paddingStart="8dp"
+                        android:paddingTop="8dp"
+                        android:paddingEnd="8dp"
+                        android:paddingBottom="8dp"
+                        android:text="@string/no"
+                        android:textColor="@color/grey"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+    </RelativeLayout>
+    <!-- WORKER ADD FORM-->
+    <RelativeLayout
+        android:visibility="gone"
+        android:id="@+id/background_add_form_section"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:background="@color/transparent_20_black"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:paddingTop="0dp">
+
+        <ScrollView
+            android:visibility="gone"
+            android:id="@+id/add_form_section"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fillViewport="true">
+
+            <RelativeLayout
+                android:id="@+id/add_form"
+                android:layout_width="532dp"
+                android:layout_height="332dp"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="110dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@color/white"
+                    android:outlineAmbientShadowColor="@color/grey"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="5dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="16dp">
+
+                        <TextView
+                            android:id="@+id/add_beacon_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="16dp"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:text="@string/worker_add"
+                            android:textColor="@color/blue"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                        <RelativeLayout
+                            android:id="@+id/beacon_title_section"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/add_beacon_title"
+                            android:layout_marginBottom="16dp">
+
+                            <ImageView
+                                android:id="@+id/worker_icon"
+                                android:layout_width="56dp"
+                                android:layout_height="32dp"
+                                android:layout_centerVertical="true"
+                                android:layout_marginEnd="16dp"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/ic_worker"
+                                app:tint="@color/blue" />
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/username_input_section"
+                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_toEndOf="@id/worker_icon"
+                                android:padding="2dp"
+                                android:textColorHint="@color/grey"
+                                app:boxStrokeErrorColor="@color/red"
+                                app:endIconMode="clear_text"
+                                app:endIconTint="@color/grey"
+                                app:errorIconDrawable="@null"
+                                app:errorIconTint="@color/red"
+                                app:errorTextColor="@color/black"
+                                app:hintEnabled="false"
+                                app:hintTextColor="@color/grey"
+                                app:placeholderTextColor="@color/black">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/username_input_text"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="32dp"
+                                    android:background="@drawable/light_grey_no_round_button"
+                                    android:ellipsize="end"
+                                    android:hint="@string/hint_worker"
+                                    android:inputType="text"
+                                    android:maxLines="1"
+                                    android:padding="5dp"
+                                    android:singleLine="true"
+                                    android:textColor="@color/black"
+                                    android:textColorHighlight="@color/grey"
+                                    android:textColorHint="@color/grey"
+                                    android:textColorLink="@color/blue"
+                                    android:textCursorDrawable="@drawable/color_cursor"
+                                    android:textSize="14sp" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                        </RelativeLayout>
+
+
+                        <RelativeLayout
+                            android:id="@+id/beacon_info_section"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/beacon_title_section">
+
+                            <RelativeLayout
+                                android:id="@+id/beacon_email_section"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="16dp">
+
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/email_input_section"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_marginBottom="16dp"
+                                    android:padding="2dp"
+                                    android:textColorHint="@color/grey"
+                                    app:boxStrokeErrorColor="@color/red"
+                                    app:endIconMode="clear_text"
+                                    app:endIconTint="@color/grey"
+                                    app:errorIconDrawable="@null"
+                                    app:errorIconTint="@color/red"
+                                    app:errorTextColor="@color/black"
+                                    app:hintEnabled="false"
+                                    app:hintTextColor="@color/grey"
+                                    app:placeholderTextColor="@color/black">
+
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/email_input_text"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="32dp"
+                                        android:background="@drawable/light_grey_no_round_button"
+                                        android:gravity="top"
+                                        android:hint="@string/hint_email"
+                                        android:inputType="text"
+                                        android:padding="5dp"
+                                        android:singleLine="true"
+                                        android:textColor="@color/black"
+                                        android:textColorHighlight="@color/grey"
+                                        android:textColorHint="@color/grey"
+                                        android:textColorLink="@color/blue"
+                                        android:textCursorDrawable="@drawable/color_cursor"
+                                        android:textSize="14sp" />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/password_input_section"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/email_input_section"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_marginBottom="16dp"
+                                    android:padding="2dp"
+                                    android:textColorHint="@color/grey"
+                                    app:boxStrokeErrorColor="@color/red"
+                                    app:endIconMode="clear_text"
+                                    app:endIconTint="@color/grey"
+                                    app:errorIconDrawable="@null"
+                                    app:errorIconTint="@color/red"
+                                    app:errorTextColor="@color/black"
+                                    app:hintEnabled="false"
+                                    app:hintTextColor="@color/grey"
+                                    app:placeholderTextColor="@color/black">
+
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/password_input_text"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="32dp"
+                                        android:background="@drawable/light_grey_no_round_button"
+                                        android:gravity="top"
+                                        android:hint="@string/hint_password"
+                                        android:inputType="textPassword"
+                                        android:padding="5dp"
+                                        android:singleLine="true"
+                                        android:textColor="@color/black"
+                                        android:textColorHighlight="@color/grey"
+                                        android:textColorHint="@color/grey"
+                                        android:textColorLink="@color/blue"
+                                        android:textCursorDrawable="@drawable/color_cursor"
+                                        android:textSize="14sp" />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/repeat_password_input_section"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/password_input_section"
+                                    android:layout_gravity="center_vertical"
+                                    android:padding="2dp"
+                                    android:textColorHint="@color/grey"
+                                    app:boxStrokeErrorColor="@color/red"
+                                    app:endIconMode="clear_text"
+                                    app:endIconTint="@color/grey"
+                                    app:errorIconDrawable="@null"
+                                    app:errorIconTint="@color/red"
+                                    app:errorTextColor="@color/black"
+                                    app:hintEnabled="false"
+                                    app:hintTextColor="@color/grey"
+                                    app:placeholderTextColor="@color/black">
+
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/repeat_password_input_text"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="32dp"
+                                        android:background="@drawable/light_grey_no_round_button"
+                                        android:gravity="top"
+                                        android:hint="@string/hint_repeat_password"
+                                        android:inputType="textPassword"
+                                        android:padding="5dp"
+                                        android:singleLine="true"
+                                        android:textColor="@color/black"
+                                        android:textColorHighlight="@color/grey"
+                                        android:textColorHint="@color/grey"
+                                        android:textColorLink="@color/blue"
+                                        android:textCursorDrawable="@drawable/color_cursor"
+                                        android:textSize="14sp" />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+                            </RelativeLayout>
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/add_beacon"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_below="@id/beacon_info_section"
+                            android:background="@drawable/blue_no_round_button"
+                            android:elevation="1dp"
+                            android:outlineAmbientShadowColor="@color/grey"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="16dp">
+
+                            <TextView
+                                android:id="@+id/add_beacon_text"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:ellipsize="end"
+                                android:maxLines="1"
+                                android:text="@string/worker_add"
+                                android:textAlignment="center"
+                                android:textColor="@color/white"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/cancel_beacon"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_below="@id/add_beacon"
+                            android:layout_marginTop="16dp"
+                            android:background="@drawable/light_grey_no_round_button"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="16dp">
+
+                            <TextView
+                                android:id="@+id/cancel_beacons_text"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:ellipsize="end"
+                                android:maxLines="1"
+                                android:text="@string/cancel"
+                                android:textAlignment="center"
+                                android:textColor="@color/blue"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+                        </RelativeLayout>
+
+                    </RelativeLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+            </RelativeLayout>
+
+        </ScrollView>
+
+    </RelativeLayout>
+    <!-- WORKER EDIT FORM-->
+    <RelativeLayout
+        android:visibility="gone"
+        android:id="@+id/background_edit_form_section"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:background="@color/transparent_20_black"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:paddingTop="0dp">
+
+        <ScrollView
+            android:visibility="gone"
+            android:id="@+id/edit_form_section"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fillViewport="true">
+
+            <RelativeLayout
+                android:id="@+id/edit_form"
+                android:layout_width="532dp"
+                android:layout_height="332dp"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@color/white"
+                    android:outlineAmbientShadowColor="@color/grey"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="5dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="16dp">
+
+                        <ImageView
+                            android:id="@+id/edit_worker_icon"
+                            android:layout_width="56dp"
+                            android:layout_height="32dp"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/ic_worker"
+                            app:tint="@color/blue" />
+
+                        <TextView
+                            android:id="@+id/edit_worker_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:layout_marginBottom="16dp"
+                            android:layout_toEndOf="@id/edit_worker_icon"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:text="@string/worker_edit_title"
+                            android:textColor="@color/blue"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                        <RelativeLayout
+                            android:id="@+id/smartwatch_selection_section"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/edit_worker_title"
+                            android:layout_marginBottom="16dp">
+
+                            <TextView
+                                android:id="@+id/smartwatch_selection_title"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="16dp"
+                                android:layout_marginBottom="8dp"
+                                android:layout_toStartOf="@id/switch_check_in"
+                                android:ellipsize="end"
+                                android:maxLines="1"
+                                android:text="@string/select_smartwatch"
+                                android:textColor="@color/grey"
+                                android:textSize="13sp" />
+
+                            <TextView
+                                android:id="@+id/selected_smartwatch"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/smartwatch_selection_title"
+                                android:layout_marginEnd="16dp"
+                                android:layout_toStartOf="@id/switch_check_in"
+                                android:background="@drawable/light_grey_no_round_button"
+                                android:ellipsize="end"
+                                android:maxLines="2"
+                                android:paddingStart="8dp"
+                                android:paddingTop="8dp"
+                                android:paddingBottom="8dp"
+                                android:textColor="@color/blue"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+                            <Switch
+                                android:id="@+id/switch_check_in"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/smartwatch_selection_title"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginTop="2dp"
+                                android:enabled="true"
+                                android:text="@string/switch_check_in_confirmed"
+                                android:textColor="@color/blue"
+                                android:textSize="14sp"
+                                tools:ignore="UseSwitchCompatOrMaterialXml" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/edit_worker"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_below="@id/smartwatch_selection_section"
+                            android:layout_marginTop="16dp"
+                            android:background="@drawable/blue_no_round_button"
+                            android:elevation="1dp"
+                            android:outlineAmbientShadowColor="@color/grey"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="16dp">
+
+                            <TextView
+                                android:id="@+id/edit_worker_text"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:ellipsize="end"
+                                android:maxLines="1"
+                                android:text="@string/worker_edit_btn"
+                                android:textAlignment="center"
+                                android:textColor="@color/white"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/cancel_edit_worker"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_below="@id/edit_worker"
+                            android:layout_marginTop="16dp"
+                            android:background="@drawable/light_grey_no_round_button"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="16dp">
+
+                            <TextView
+                                android:id="@+id/cancel_worker_text"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:ellipsize="end"
+                                android:maxLines="1"
+                                android:text="@string/cancel"
+                                android:textAlignment="center"
+                                android:textColor="@color/blue"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+                        </RelativeLayout>
+
+                    </RelativeLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+                <RelativeLayout
+                    android:visibility="gone"
+                    android:id="@+id/smartwatch_list_form_transparent"
+                    android:layout_width="532dp"
+                    android:layout_height="332dp"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center"
+                    android:clickable="true"
+                    android:elevation="11dp"
+                    android:focusable="true">
+
+                    <RelativeLayout
+                        android:id="@+id/smartwatch_list_section"
+                        android:layout_width="300dp"
+                        android:layout_height="138dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginBottom="48dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/white_no_round_button_normal"
+                        android:elevation="10dp"
+                        android:outlineAmbientShadowColor="@color/grey">
+
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recycler_view_smartwatch_list"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:nestedScrollingEnabled="true"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"/>
+                    </RelativeLayout>
+
+                </RelativeLayout>
+            </RelativeLayout>
+
+
+        </ScrollView>
+
+    </RelativeLayout>
+
+</RelativeLayout>

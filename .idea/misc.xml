@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/drawable-v24/color_cursor.xml" value="0.2555" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/drawable-v24/white_outline_round_button.xml" value="0.2555" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/drawable/blue_no_round_button.xml" value="0.1765" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/drawable/blue_outline_no_round_button_normal.xml" value="0.225" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/drawable/blue_section.xml" value="0.271" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/drawable/calendar_green_outline_button.xml" value="0.3345" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/drawable/calendar_green_outline_section.xml" value="0.3345" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/drawable/calendar_green_outline_section_white_back.xml" value="0.3345" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/drawable/calendar_green_section.xml" value="0.3345" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/drawable/calendar_grey_outline_section.xml" value="0.3345" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/drawable/calendar_grey_outline_section_out.xml" value="0.3345" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/drawable/calendar_red_outline_button.xml" value="0.2955" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/drawable/calendar_red_outline_section.xml" value="0.3345" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/drawable/calendar_red_outline_section_white_back.xml" value="0.2955" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/drawable/calendar_red_section.xml" value="0.3345" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/drawable/calendar_yellow_outline_button.xml" value="0.3345" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/drawable/calendar_yellow_outline_section.xml" value="0.3345" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/drawable/calendar_yellow_outline_section_white_bacj.xml" value="0.3345" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/drawable/calendar_yellow_outline_section_white_back.xml" value="0.2955" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/drawable/color_cursor.xml" value="0.254" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/drawable/green_no_round_button_normal.xml" value="0.351" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/drawable/green_outline_no_round_button_normal.xml" value="0.241" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/drawable/grey_no_round_button.xml" value="0.272" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/drawable/grey_no_round_button_normal.xml" value="0.272" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/drawable/grey_oulite_no_round_button_normal.xml" value="0.1765" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/drawable/grey_outline_no_round_button.xml" value="0.1765" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/drawable/grey_solid_outline_no_round_button.xml" value="0.225" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/drawable/grey_solid_outline_no_round_button_normal.xml" value="0.225" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/drawable/ic_accident_active.xml" value="0.2715" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/drawable/ic_accident_inactive.xml" value="0.275" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/drawable/ic_alerts_active.xml" value="0.3345" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/drawable/ic_alerts_inactive.xml" value="0.3345" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/drawable/ic_beacon_off.xml" value="0.3345" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/drawable/ic_beacon_on.xml" value="0.3345" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/drawable/ic_beacon_radar.xml" value="0.3345" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/drawable/ic_beacons_data_inactive.xml" value="0.232" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/drawable/ic_green_area.xml" value="0.3345" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/drawable/ic_history_active.xml" value="0.2715" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/drawable/ic_history_inactive.xml" value="0.3345" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/drawable/ic_launcher_background.xml" value="0.271" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/drawable/ic_off.xml" value="0.232" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/drawable/ic_on.xml" value="0.232" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/drawable/ic_outline_access_time_24.xml" value="0.3345" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/drawable/ic_radar_area.xml" value="0.3345" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/drawable/ic_radar_inactive.xml" value="0.3345" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/drawable/ic_read.xml" value="0.275" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/drawable/ic_recommendations_active.xml" value="0.275" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/drawable/ic_smart_sonia_dashboard_logo.xml" value="0.1" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/drawable/ic_smart_sonia_dashboard_logo_no_text.xml" value="0.271" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/drawable/ic_smart_sonia_dashboard_logo_text.xml" value="0.1" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/drawable/ic_smart_sonia_logo.xml" value="0.1" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/drawable/ic_unread.xml" value="0.275" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/drawable/light_blue_round_button.xml" value="0.254" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/drawable/light_blue_round_button_normal.xml" value="0.254" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/drawable/light_grey_no_round_button.xml" value="0.3675" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/drawable/light_grey_no_round_button_normal.xml" value="0.3675" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/drawable/light_grey_no_round_button_red_stroke.xml" value="0.3675" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/drawable/light_grey_no_round_button_red_stroke_normal.xml" value="0.3675" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/drawable/radar_icon_inactive.xml" value="0.232" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/drawable/red_no_round_button_normal.xml" value="0.1595" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/drawable/red_outline_no_round_button_normal.xml" value="0.241" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/drawable/risk_high_outline_no_round_button_normal.xml" value="0.343" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/drawable/risk_low_outline_no_round_button_normal.xml" value="0.343" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/drawable/risk_medium_outline_no_round_button_normal.xml" value="0.343" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/drawable/risk_very_high_outline_no_round_button_normal.xml" value="0.343" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/drawable/risk_very_low_outline_no_round_button_normal.xml" value="0.343" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/drawable/white_no_round_button.xml" value="0.1765" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/drawable/white_no_round_button_normal.xml" value="0.1765" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/drawable/white_no_round_button_normal_roundtop.xml" value="0.2955" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/drawable/white_outline_round_button.xml" value="0.2555" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/drawable/white_round_button.xml" value="0.271" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/drawable/white_round_button_normal.xml" value="0.2555" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/drawable/white_round_button_red_stroke.xml" value="0.2915" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/drawable/white_round_button_red_stroke_normal.xml" value="0.2915" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/layout/activity_dashboard.xml" value="0.18" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/layout/activity_login.xml" value="0.12" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/layout/activity_loginpage.xml" value="0.13984375" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/layout/activity_main.xml" value="0.35260416666666666" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/layout/adapter_accident_item.xml" value="0.25" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/layout/adapter_alert_item.xml" value="0.25" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/layout/adapter_alert_item_calendar.xml" value="0.18333333333333332" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/layout/adapter_alerts_item.xml" value="0.18333333333333332" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/layout/adapter_beacon_item.xml" value="0.5141242937853108" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/layout/adapter_day_item.xml" value="0.18333333333333332" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/layout/adapter_detail_item.xml" value="0.18333333333333332" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/layout/adapter_mesage_item.xml" value="0.33" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/layout/adapter_message_item.xml" value="0.18333333333333332" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/layout/adapter_new_beacon.xml" value="0.33" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/layout/adapter_new_worker.xml" value="0.18333333333333332" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/layout/adapter_recommendation_item.xml" value="0.18" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/layout/adapter_send_alert_worker_item.xml" value="0.18333333333333332" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/layout/adapter_send_messages_worker_item.xml" value="0.18333333333333332" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/layout/adapter_smartwatch_item.xml" value="0.18" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/layout/adapter_sos_alert_imet.xml" value="0.18333333333333332" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/layout/adapter_sos_alert_item.xml" value="0.15" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/layout/adapter_sos_alert_item_calendar.xml" value="0.18333333333333332" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/layout/adapter_worker_data_item.xml" value="0.25" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/layout/adapter_worker_item.xml" value="0.17916666666666667" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/layout/fragment_accidents.xml" value="0.16" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/layout/fragment_alerts.xml" value="0.18072916666666666" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/layout/fragment_beacons.xml" value="0.18333333333333332" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/layout/fragment_history.xml" value="0.15" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/layout/fragment_recommendations.xml" value="0.18333333333333332" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/layout/fragment_send_alert.xml" value="0.18072916666666666" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/layout/fragment_send_alerts.xml" value="0.2213053263315829" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/layout/fragment_send_messages.xml" value="0.18333333333333332" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/layout/fragment_sos.xml" value="0.1" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/layout/fragment_worker_board.xml" value="0.12583333333333332" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/layout/fragment_worker_data.xml" value="0.1" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/layout/message_layout.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SmartSoniaDashboard/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2955" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

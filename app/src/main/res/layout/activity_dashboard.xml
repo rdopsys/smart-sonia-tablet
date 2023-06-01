@@ -1,0 +1,456 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".activities.Dashboard">
+
+    <!-- TOOL BAR -->
+    <RelativeLayout
+        android:id="@+id/sonia_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:layout_alignParentTop="true"
+        android:background="@color/blue"
+        android:gravity="center_vertical"
+        android:paddingStart="122dp"
+        android:paddingTop="16dp"
+        android:paddingEnd="32dp"
+        android:paddingBottom="16dp">
+
+        <ImageView
+            android:id="@+id/toolbar_app_logo"
+            android:layout_width="400dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:scaleType="fitStart"
+            android:src="@drawable/ic_smart_sonia_dashboard_logo_no_text" />
+
+        <ImageView
+            android:id="@+id/funds"
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:scaleType="fitEnd"
+            android:src="@drawable/funds_background" />
+
+        <RelativeLayout
+            android:id="@+id/toolbar_user_section"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="16dp"
+            android:layout_toStartOf="@id/funds"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:id="@+id/user_icon"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:layout_centerHorizontal="true"
+                android:scaleType="fitEnd"
+                android:src="@drawable/ic_user" />
+
+            <TextView
+                android:id="@+id/username_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/user_icon"
+                android:layout_centerHorizontal="true"
+                android:ellipsize="end"
+                android:maxWidth="250dp"
+                android:maxLines="1"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+    <!-- SIDE NAVIGATION -->
+    <ScrollView
+        android:id="@+id/navigation_bar"
+        android:layout_width="90dp"
+        android:layout_height="match_parent"
+        android:layout_below="@id/sonia_toolbar"
+        android:background="@color/grey_lighter"
+        android:scrollbars="none">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="32dp">
+
+            <ImageView
+                android:id="@+id/nav_worker_board"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="8dp"
+                android:scaleType="fitEnd"
+                android:src="@drawable/ic_worker_board_inactive" />
+
+            <ImageView
+                android:id="@+id/nav_beacons"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_below="@id/nav_worker_board"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="8dp"
+                android:scaleType="fitEnd"
+                android:src="@drawable/ic_beacons_data_inactive" />
+
+            <ImageView
+                android:id="@+id/nav_worker_data"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_below="@id/nav_beacons"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="8dp"
+                android:scaleType="fitEnd"
+                android:src="@drawable/ic_worker_data_inactive" />
+
+            <ImageView
+                android:id="@+id/nav_alerts"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_below="@id/nav_worker_data"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="8dp"
+                android:scaleType="fitEnd"
+                android:src="@drawable/ic_alerts_inactive" />
+
+            <ImageView
+                android:id="@+id/nav_recommendations"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_below="@id/nav_alerts"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="8dp"
+                android:scaleType="fitEnd"
+                android:src="@drawable/ic_recommendations_inactive" />
+
+            <ImageView
+                android:id="@+id/nav_send_alert"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_below="@id/nav_recommendations"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="8dp"
+                android:scaleType="fitEnd"
+                android:src="@drawable/ic_send_alert_inactive" />
+
+            <ImageView
+                android:id="@+id/nav_sos"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_below="@id/nav_send_alert"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="8dp"
+                android:scaleType="fitEnd"
+                android:src="@drawable/ic_sos_inactive" />
+
+            <ImageView
+                android:id="@+id/nav_accident"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_below="@id/nav_sos"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="8dp"
+                android:scaleType="fitEnd"
+                android:src="@drawable/ic_accident_inactive" />
+
+            <ImageView
+                android:id="@+id/nav_history"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_below="@id/nav_accident"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="32dp"
+                android:scaleType="fitEnd"
+                android:src="@drawable/ic_history_inactive" />
+
+            <ImageView
+                android:id="@+id/nav_logout"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_below="@id/nav_history"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="16dp"
+                android:padding="8dp"
+                android:scaleType="fitEnd"
+                android:src="@drawable/ic_logout_inactive" />
+        </RelativeLayout>
+
+    </ScrollView>
+    <!-- UI LINE -->
+    <View
+        android:id="@+id/line"
+        android:layout_width="2dp"
+        android:layout_height="match_parent"
+        android:background="@color/grey_light"
+        android:layout_below="@id/sonia_toolbar"
+        android:layout_toEndOf="@id/navigation_bar"/>
+    <!-- FRAGMENT - PAGES WINDOW -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/sonia_toolbar"
+        android:layout_toEndOf="@id/line">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/page_background" />
+
+        <RelativeLayout
+            android:id="@+id/calendar_section"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="32dp"
+            android:paddingTop="24dp"
+            android:paddingEnd="32dp"
+            android:paddingBottom="8dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/day_back_icon"
+                    android:layout_width="56dp"
+                    android:layout_height="40dp"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@id/today"
+                    android:paddingStart="20dp"
+                    android:paddingTop="12dp"
+                    android:paddingEnd="20dp"
+                    android:paddingBottom="12dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_back"
+                    app:tint="@color/grey" />
+
+                <ImageView
+                    android:id="@+id/day_forward_icon"
+                    android:layout_width="56dp"
+                    android:layout_height="40dp"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@id/day_back_icon"
+                    android:paddingStart="20dp"
+                    android:paddingTop="12dp"
+                    android:paddingEnd="20dp"
+                    android:paddingBottom="12dp"
+                    android:rotation="180"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_back"
+                    app:tint="@color/grey" />
+
+                <TextView
+                    android:id="@+id/today"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:padding="8dp"
+                    android:text="@string/today"
+                    android:textColor="@color/blue"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/yesterday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@id/day_forward_icon"
+                    android:padding="8dp"
+                    android:textColor="@color/blue"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <RelativeLayout
+                    android:id="@+id/calendar_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:padding="8dp">
+
+                    <ImageView
+                        android:id="@+id/calendar_icon"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="16dp"
+                        android:padding="4dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_calendar"
+                        app:tint="@color/blue" />
+
+                    <TextView
+                        android:id="@+id/calendar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toEndOf="@id/calendar_icon"
+                        android:text="@string/calendar"
+                        android:textColor="@color/blue"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+        <!-- UI LINE -->
+        <View
+            android:id="@+id/line_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/grey_light"
+            android:layout_below="@id/calendar_section"
+            android:layout_toEndOf="@id/navigation_bar"/>
+
+        <FrameLayout
+            android:id="@+id/Home_fragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/line_horizontal" />
+        <!-- MESSAGE -->
+        <include layout="@layout/message_layout"/>
+    </RelativeLayout>
+
+    <!-- LOGOUT WINDOW-->
+    <RelativeLayout
+        android:visibility="gone"
+        android:id="@+id/confirm_logout_section"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="@color/transparent_50_black"
+        android:paddingStart="146dp"
+        android:paddingEnd="56dp"
+        android:paddingBottom="56dp"
+        android:paddingTop="166dp">
+
+        <ScrollView
+            android:visibility="gone"
+            android:id="@+id/confirm_logout_inner_section"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/white_no_round_button_normal"
+            android:outlineSpotShadowColor="@color/grey"
+            android:scrollbars="none"
+            android:fillViewport="true"
+            android:clickable="true"
+            android:focusable="true">
+            <RelativeLayout
+                android:paddingStart="98dp"
+                android:paddingEnd="122dp"
+                android:paddingBottom="56dp"
+                android:paddingTop="56dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="true">
+                <RelativeLayout
+                    android:layout_toStartOf="@id/confirm_button_section"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/confirm_text_section"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/circle_line"
+                        android:layout_width="match_parent"
+                        android:layout_height="130dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginTop="72dp"
+                        android:scaleType="fitStart"
+                        android:src="@drawable/ic_logout_circle_line" />
+
+                    <TextView
+                        android:id="@+id/confirm_text_a"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="28dp"
+                        android:layout_marginBottom="16sp"
+                        android:text="@string/logout_confirm_title_a"
+                        android:textColor="@color/blue"
+                        android:textSize="56sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/confirm_text_b"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/confirm_text_a"
+                        android:layout_marginStart="28dp"
+                        android:ellipsize="end"
+                        android:maxLines="2"
+                        android:text="@string/logout_confirm_title_b"
+                        android:textColor="@color/blue"
+                        android:textSize="56sp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/confirm_button_section"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <TextView
+                        android:id="@+id/confirm_logout_yes"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16sp"
+                        android:background="@drawable/blue_no_round_button"
+                        android:ellipsize="end"
+                        android:gravity="center"
+                        android:maxLines="2"
+                        android:paddingStart="8dp"
+                        android:paddingTop="8dp"
+                        android:paddingEnd="8dp"
+                        android:paddingBottom="8dp"
+                        android:text="@string/yes"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/confirm_logout_no"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/confirm_logout_yes"
+                        android:background="@drawable/grey_outline_no_round_button"
+                        android:ellipsize="end"
+                        android:gravity="center"
+                        android:maxLines="2"
+                        android:paddingStart="8dp"
+                        android:paddingTop="8dp"
+                        android:paddingEnd="8dp"
+                        android:paddingBottom="8dp"
+                        android:text="@string/no"
+                        android:textColor="@color/grey"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+            </RelativeLayout>
+        </ScrollView>
+        <ImageView
+            android:visibility="gone"
+            android:id="@+id/close_confirm_logout_section"
+            android:layout_margin="32dp"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:scaleType="fitCenter"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/ic_close" />
+
+    </RelativeLayout>
+</RelativeLayout>

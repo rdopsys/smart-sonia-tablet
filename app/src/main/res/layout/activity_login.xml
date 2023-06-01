@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.Login"
+    android:id="@+id/main_layout"
+    android:background="@color/yellow">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.7">
+
+            <ImageView
+                android:id="@+id/background"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/login_background_image" />
+            <ImageView
+                android:id="@+id/funds"
+                android:layout_width="250dp"
+                android:layout_height="110dp"
+                android:scaleType="fitStart"
+                android:layout_marginStart="56dp"
+                android:layout_marginTop="32dp"
+                android:src="@drawable/funds_background" />
+            <ImageView
+                android:id="@+id/app_logo"
+                android:layout_width="500dp"
+                android:layout_height="200dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="56dp"
+                android:layout_marginBottom="56dp"
+                android:scaleType="fitStart"
+                android:src="@drawable/smart_sonia_logo" />
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_weight="1"
+            android:paddingTop="8dp"
+            android:paddingBottom="16dp"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+
+            <TextView
+                android:id="@+id/login_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16sp"
+                android:paddingStart="56dp"
+                android:text="@string/login_button"
+                android:textColor="@color/blue"
+                android:textSize="56sp"
+                android:textStyle="bold" />
+            <HorizontalScrollView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scrollbars="none"
+                android:layout_below="@id/login_title">
+                <RelativeLayout
+                    android:paddingStart="56dp"
+                    android:id="@+id/login_fields_section"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/username_section"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_gravity="center_vertical"
+                        android:padding="2dp"
+                        android:textColorHint="@color/grey"
+                        app:boxStrokeErrorColor="@color/red"
+                        app:endIconMode="clear_text"
+                        app:endIconTint="@color/grey"
+                        app:errorIconTint="@color/red"
+                        app:errorTextColor="@color/black"
+                        app:hintEnabled="false"
+                        app:errorIconDrawable="@null"
+                        app:hintTextColor="@color/grey"
+                        app:placeholderTextColor="@color/black">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/username_text"
+                            android:layout_width="220dp"
+                            android:layout_height="60dp"
+                            android:background="@drawable/white_round_button"
+                            android:ellipsize="end"
+                            android:gravity="center"
+                            android:hint="@string/hint_username"
+                            android:inputType="text"
+                            android:maxLines="1"
+                            android:padding="5dp"
+                            android:singleLine="true"
+                            android:textAlignment="center"
+                            android:textColor="@color/black"
+                            android:textColorHighlight="@color/grey"
+                            android:textColorHint="@color/grey"
+                            android:textColorLink="@color/blue"
+                            android:textCursorDrawable="@drawable/color_cursor"
+                            android:textSize="20sp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/password_section"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_toEndOf="@id/username_section"
+                        android:background="#00000000"
+                        android:padding="2dp"
+                        android:textColorHint="@color/grey"
+                        app:boxStrokeErrorColor="@color/red"
+                        app:endIconMode="password_toggle"
+                        app:endIconTint="@color/grey"
+                        app:errorIconTint="@color/red"
+                        app:errorIconDrawable="@null"
+                        app:errorTextColor="@color/black"
+                        app:hintEnabled="false"
+                        app:hintTextColor="@color/grey"
+                        app:placeholderTextColor="@color/black">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/password_text"
+                            android:layout_width="220dp"
+                            android:layout_height="60dp"
+                            android:background="@drawable/white_round_button"
+                            android:ellipsize="end"
+                            android:gravity="center"
+                            android:hint="@string/hint_password"
+                            android:inputType="textPassword"
+                            android:maxLines="1"
+                            android:paddingStart="5dp"
+                            android:paddingTop="5dp"
+                            android:paddingEnd="5dp"
+                            android:paddingBottom="5dp"
+                            android:singleLine="true"
+                            android:textAlignment="center"
+                            android:textColor="@color/black"
+                            android:textColorHighlight="@color/blue"
+                            android:textColorHint="@color/grey"
+                            android:textColorLink="@color/blue"
+                            android:textCursorDrawable="@drawable/color_cursor"
+                            android:textSize="20sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <TextView
+                        android:id="@+id/login_button"
+                        android:layout_width="220dp"
+                        android:layout_height="60dp"
+                        android:layout_centerVertical="true"
+                        android:layout_toEndOf="@id/password_section"
+                        android:background="@drawable/light_blue_round_button"
+                        android:gravity="center"
+                        android:text="@string/login_button"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                </RelativeLayout>
+
+            </HorizontalScrollView>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="15dp"
+            android:background="@color/blue"
+            android:layout_alignParentBottom="true"/>
+    </LinearLayout>
+
+
+    <!-- MESSAGE -->
+    <include layout="@layout/message_layout"/>
+</RelativeLayout>

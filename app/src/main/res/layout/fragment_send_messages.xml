@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.WorkerBoard"
+    android:focusable="true"
+    android:clickable="true">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/page_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/loading_refresh_section"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:paddingStart="32dp"
+                android:paddingTop="32dp"
+                android:text="@string/message_page_title"
+                android:textColor="@color/blue"
+                android:textSize="40sp"
+                android:textStyle="bold" />
+            <RelativeLayout
+                android:paddingTop="32dp"
+                android:paddingEnd="32dp"
+                android:id="@+id/loading_refresh_section"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true">
+                <ProgressBar
+                    android:visibility="gone"
+                    android:id="@+id/loading"
+                    android:layout_width="40dp"
+                    android:layout_height="52dp"
+                    android:layout_marginStart="16dp"
+                    android:indeterminateTint="@color/blue" />
+
+                <ImageView
+                    android:visibility="gone"
+                    android:id="@+id/refresh_button"
+                    android:layout_width="40dp"
+                    android:layout_height="52dp"
+                    android:scaleType="fitCenter"
+                    android:layout_marginStart="16dp"
+                    android:src="@drawable/ic_baseline_refresh_24"
+                    app:tint="@color/blue" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/selected_worker_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/page_title"
+                android:layout_marginTop="16dp"
+                android:layout_toStartOf="@id/loading_refresh_section"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:paddingStart="32dp"
+                android:paddingEnd="32dp"
+                android:text="@string/select_worker"
+                android:textColor="@color/blue"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view_send_alerts"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/selected_worker_title"
+                android:layout_marginTop="8dp"
+                android:nestedScrollingEnabled="true" />
+
+            <TextView
+                android:id="@+id/message_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/recycler_view_send_alerts"
+                android:layout_marginTop="16dp"
+                android:layout_toStartOf="@id/loading_refresh_section"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:paddingStart="32dp"
+                android:paddingEnd="32dp"
+                android:text="@string/all_message_title"
+                android:textColor="@color/blue"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view_messages"
+                android:layout_width="match_parent"
+                android:layout_height="320dp"
+                android:layout_below="@id/message_title"
+                android:layout_marginTop="8dp"
+                android:nestedScrollingEnabled="true"
+                android:paddingStart="24dp"
+                android:paddingEnd="24dp" />
+
+            <TextView
+                android:visibility="gone"
+                android:id="@+id/no_messages"
+                android:layout_marginTop="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/message_title"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:padding="16dp"
+                android:text="@string/no_messages"
+                android:textAlignment="center"
+                android:textColor="@color/grey"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- ADD ALERT-->
+    <RelativeLayout
+        android:visibility="gone"
+        android:id="@+id/background_add_alerts_form_section"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:background="@color/transparent_20_black"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:paddingTop="0dp">
+
+        <ScrollView
+            android:visibility="gone"
+            android:id="@+id/add_alert_form_section"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+
+            <RelativeLayout
+                android:id="@+id/add_form"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="110dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@color/white"
+                    android:outlineAmbientShadowColor="@color/grey"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="5dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingStart="56dp"
+                        android:paddingEnd="56dp"
+                        android:paddingTop="32dp"
+                        android:paddingBottom="32dp">
+
+                        <ImageView
+                            android:id="@+id/send_alert_icon"
+                            android:layout_width="56dp"
+                            android:layout_height="56dp"
+                            android:layout_marginEnd="16dp"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/ic_send_alert_active" />
+
+                        <TextView
+                            android:id="@+id/add_alert_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:layout_toEndOf="@id/send_alert_icon"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:text="@string/send_alert_to"
+                            android:textColor="@color/blue"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                        <RelativeLayout
+                            android:layout_marginTop="16dp"
+                            android:id="@+id/alert_title_section"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/send_alert_icon"
+                            android:layout_marginBottom="16dp">
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/alert_title_input_section"
+                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:padding="2dp"
+                                android:textColorHint="@color/grey"
+                                app:boxStrokeErrorColor="@color/red"
+                                app:endIconMode="clear_text"
+                                app:endIconTint="@color/grey"
+                                app:errorIconDrawable="@null"
+                                app:errorIconTint="@color/red"
+                                app:errorTextColor="@color/black"
+                                app:hintEnabled="false"
+                                app:hintTextColor="@color/grey"
+                                app:placeholderTextColor="@color/black">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/alert_title_input_text"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="50dp"
+                                    android:background="@drawable/light_grey_no_round_button"
+                                    android:ellipsize="end"
+                                    android:hint="@string/alert_title_hint"
+                                    android:inputType="text"
+                                    android:maxLines="1"
+                                    android:paddingStart="16dp"
+                                    android:singleLine="true"
+                                    android:textColor="@color/black"
+                                    android:textColorHighlight="@color/grey"
+                                    android:textColorHint="@color/grey"
+                                    android:textColorLink="@color/blue"
+                                    android:textCursorDrawable="@drawable/color_cursor"
+                                    android:textSize="14sp" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/alert_info_section"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/alert_title_section">
+
+                            <RelativeLayout
+                                android:id="@+id/alert_message_section"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="16dp">
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/alert_message_input_section"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:padding="2dp"
+                                    android:textColorHint="@color/grey"
+                                    app:boxStrokeErrorColor="@color/red"
+                                    app:endIconMode="clear_text"
+                                    app:endIconTint="@color/grey"
+                                    app:errorIconDrawable="@null"
+                                    app:errorIconTint="@color/red"
+                                    app:errorTextColor="@color/black"
+                                    app:hintEnabled="false"
+                                    app:hintTextColor="@color/grey"
+                                    app:placeholderTextColor="@color/black">
+
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/alert_message_input_text"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="150dp"
+                                        android:background="@drawable/light_grey_no_round_button"
+                                        android:gravity="top"
+                                        android:hint="@string/alert_message_hint"
+                                        android:inputType="textMultiLine"
+                                        android:paddingStart="16dp"
+                                        android:paddingTop="8dp"
+                                        android:textColor="@color/black"
+                                        android:textColorHighlight="@color/grey"
+                                        android:textColorHint="@color/grey"
+                                        android:textColorLink="@color/blue"
+                                        android:textCursorDrawable="@drawable/color_cursor"
+                                        android:textSize="14sp" />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+                            </RelativeLayout>
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/alert_info_section"
+                            android:layout_marginTop="16dp"
+                            android:gravity="center">
+
+                            <RelativeLayout
+                                android:id="@+id/send_alert"
+                                android:layout_width="150dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="16dp"
+                                android:background="@drawable/blue_no_round_button"
+                                android:elevation="1dp"
+                                android:outlineAmbientShadowColor="@color/grey"
+                                android:paddingStart="8dp"
+                                android:paddingTop="8dp"
+                                android:paddingEnd="8dp"
+                                android:paddingBottom="8dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerInParent="true"
+                                    android:ellipsize="end"
+                                    android:maxLines="1"
+                                    android:text="@string/send"
+                                    android:textAlignment="center"
+                                    android:textColor="@color/white"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/cancel_send_alert"
+                                android:layout_width="150dp"
+                                android:layout_height="wrap_content"
+                                android:layout_toEndOf="@id/send_alert"
+                                android:background="@drawable/light_grey_no_round_button"
+                                android:paddingStart="8dp"
+                                android:paddingTop="8dp"
+                                android:paddingEnd="8dp"
+                                android:paddingBottom="8dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerInParent="true"
+                                    android:ellipsize="end"
+                                    android:maxLines="1"
+                                    android:text="@string/cancel"
+                                    android:textAlignment="center"
+                                    android:textColor="@color/blue"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
+                            </RelativeLayout>
+                        </RelativeLayout>
+
+
+                    </RelativeLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+            </RelativeLayout>
+
+        </ScrollView>
+
+    </RelativeLayout>
+
+</RelativeLayout>
