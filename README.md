@@ -1,1 +1,1 @@
-# smart-sonia-tablet
+smart-tablet4director
